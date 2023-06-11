@@ -87,17 +87,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-2">
-                        <label for="role" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                            Vous êtes un
-                        </label>
-                        <select name="role" id="role"
-                            class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
-                            <option value="">Choisissez une option</option>
-                            <option value="etudiant">Etudiant</option>
-                            <option value="formateur">Formateur</option>
-                        </select>
-                    </div>
                     <div class="mt-6 text-center text-md ">
                         <input type="submit" value="S'inscrire"
                             class="rounded-xl cursor-pointer w-full py-3 font-semibold bg-gray1 hover:bg-black2 hover:text-white">
