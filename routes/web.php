@@ -25,6 +25,9 @@ Route::get('/signup', function () {
     return view('auth.signup');
 });
 
+Route::get('/signupteacher', function () {
+    return view('auth.signupTeacher');
+});
 
 Route::get('/forgotpassword', function () {
     return view('auth.forgotpassword');
