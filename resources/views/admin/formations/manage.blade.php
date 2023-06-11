@@ -25,8 +25,9 @@
                             <thead class="border-b font-medium">
                                 <tr>
                                     <th scope="col" class="px-6 py-4">#</th>
-                                    <th scope="col" class="px-6 py-4">titre</th>
+                                    <th scope="col" class="px-6 py-4">Titre</th>
                                     <th scope="col" class="px-6 py-4">Description</th>
+                                    <th scope="col" class="px-6 py-4">Prix</th>
                                     <th scope="col" class="px-6 py-4">Durée</th>
                                     <th scope="col" class="px-6 py-4">Date de début</th>
                                     <th scope="col" class="px-6 py-4">Date de fin</th>
@@ -45,6 +46,7 @@
                                         @endif
 
                                     </td>
+                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
                                     <td class="whitespace-nowrap px-6 py-4">sqvb</td>
                                     <td class="whitespace-nowrap px-6 py-4">sqvb</td>
                                     <td class="whitespace-nowrap px-6 py-4">sqvb</td>
