@@ -9,7 +9,7 @@
         <div class="w-[280px]">
             <x-sidebar :active="2" />
         </div>
-        <div class="flex-1 mx-4">
+        <div class="flex-1 mx-4 overflow-hidden">
             <div class="flex justify-between items-center text-center my-[4%] mx-[4%]">
                 <div>
                     <h2 class="font-bold text-[20px]">Tous les formations</h2>
@@ -20,7 +20,7 @@
             </div>
             <div>
                 <div class="flex flex-col">
-                    <div class="inline-block w-full py-2 sm:px-6 lg:px-8">
+                    <div class="inline-block w-full py-2 sm:px-6 lg:px-8 overflow-x-scroll">
                         <table class="w-full text-left text-base font-light">
                             <thead class="border-b font-medium">
                                 <tr>

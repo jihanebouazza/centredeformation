@@ -67,9 +67,6 @@ Route::get('/formateurs', function () {
     return view('admin.formateurs.manage');
 });
 
-Route::get('/formateurs/create', function () {
-    return view('admin.formateurs.create');
-});
 Route::get('/formateurs/edit', function () {
     return view('admin.formateurs.edit');
 });
@@ -78,9 +75,6 @@ Route::get('/candidatures', function () {
     return view('admin.candidatures.manage');
 });
 
-Route::get('/candidatures/create', function () {
-    return view('admin.candidatures.create');
-});
 Route::get('/candidatures/edit', function () {
     return view('admin.candidatures.edit');
 });
