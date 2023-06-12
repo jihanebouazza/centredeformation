@@ -78,3 +78,11 @@ Route::get('/candidatures', function () {
 Route::get('/candidatures/edit', function () {
     return view('admin.candidatures.edit');
 });
+
+Route::get('/etudiants', function () {
+    return view('admin.etudiants.manage');
+});
+
+Route::get('/etudiants/edit', function () {
+    return view('admin.etudiants.edit');
+});
