@@ -82,16 +82,6 @@
                                 <option value="">Groupe 2</option>
                             </select>
                         </div>
-                        <div class="mt-2">
-                            <label for="image" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                                Image
-                            </label>
-                            <div class="mt-1">
-                                <input
-                                    class="block w-full text-sm text-gray-900 border border-gray1 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none"
-                                    id="file_input" type="file" name="image">
-                            </div>
-                        </div>
                         <div class="mt-6 text-center text-md ">
                             <input type="submit" value="Modifier"
                                 class="rounded-xl cursor-pointer w-full py-3 font-semibold bg-gray1 hover:bg-black2 hover:text-white">
