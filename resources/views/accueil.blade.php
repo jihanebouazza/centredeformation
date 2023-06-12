@@ -160,14 +160,14 @@
                 <li class="mt-2">
                     <a class="text-white hover:text-gray1 duration-300
                      text-md cursor-pointer leading-6"
-                        href='/products'>
+                        href='/login'>
                         Se connecter
                     </a>
                 </li>
                 <li class="mt-2">
                     <a class="text-white hover:text-gray1 duration-300
                      text-md cursor-pointer leading-6"
-                        href='/faq'>
+                        href='/signup'>
                         S'inscrire
                     </a>
                 </li>
