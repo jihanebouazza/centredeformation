@@ -33,7 +33,7 @@ class UserController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
-        return redirect('/login')->with('message', 'You have been logged out!');
+        return redirect('/login')->with('success', 'You have been logged out!');
     }
 
     public function resetform(Request $request)
@@ -92,7 +92,7 @@ class UserController extends Controller
         if (auth()->attempt([$fieldType => $formFields['login'], 'password' => $formFields['password']])) {
             request()->session()->regenerate();
 
-            return redirect('/')->with('message', 'You are now logged in!');
+            return redirect('/')->with('success', 'You are now logged in!');
         }
 
         return back()->withErrors(['login' => 'Invalid Credentials'])->onlyInput('login');
