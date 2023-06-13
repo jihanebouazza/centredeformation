@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FormationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,28 +44,19 @@ Route::get('/candidature', function () {
     return view('auth.candidature');
 });
 
-Route::get('/forgotpassword', function () {
-    return view('auth.forgotpassword');
-});
-
-Route::get('/newpassword', function () {
-    return view('auth.newpassword');
-});
-
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/formations', function () {
-    return view('admin.formations.manage');
-});
+Route::get('/formations', [FormationController::class, 'manage']);
 
-Route::get('/formations/create', function () {
-    return view('admin.formations.create');
-});
-Route::get('/formations/edit', function () {
-    return view('admin.formations.edit');
-});
+Route::post('/formations', [FormationController::class, 'store']);
+
+Route::get('/formations/create', [FormationController::class, 'create']);
+
+Route::get('/formations/{formation}/edit', [FormationController::class, 'edit']);
+
+
 
 Route::get('/groupes', function () {
     return view('admin.groupes.manage');

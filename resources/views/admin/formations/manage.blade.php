@@ -33,30 +33,34 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($formations as $formation)
+                                    
+                                
                                 <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Mark</td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{{$formation->id}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$formation->titre}}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
-                                        @if (strlen($description) > 25)
-                                            {{ substr($description, 0, 25) }}...
+                                        @if (strlen($formation->description) > 25)
+                                            {{ substr($formation->description, 0, 25) }}...
                                         @else
-                                            {{ $description }}
+                                            {{ $formation->description }}
                                         @endif
 
                                     </td>
-                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
-                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{ $formation->prix }}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{ $formation->duree }} mois </td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         <div class="flex items-center">
                                             <div class="ml-2 mr-4">
-                                                <a href="/formations/edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                <a href="/formations/{{ $formation->id }}/edit"><i class="fa-regular fa-pen-to-square"></i></a>
                                             </div>
                                             <div>
-                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')" href="/formations/delete"><i class="fa-solid fa-trash"></i></a>
+                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')" href="/formations/{{ $formation->id }}/delete"><i class="fa-solid fa-trash"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -13,7 +13,8 @@
                     </h2>
                 </div>
                 <div class="">
-                    <form>
+                    <form method="POST" action="/formations">
+                        @csrf
                         <div class="mt-2">
                             <label for="titre" class="block ml-1 text-md font-medium text-gray-700 mb-1">
                                 Titre
@@ -37,16 +38,16 @@
                                 Prix
                             </label>
                             <div class="mt-1">
-                                <input type="text" name="prix"
+                                <input type="number" name="prix"
                                     class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                             </div>
                         </div>
                         <div class="mt-2">
                             <label for="duree" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                                Durée
+                                Durée *par mois
                             </label>
                             <div class="mt-1">
-                                <input type="text" name="duree"
+                                <input type="number" name="duree"
                                     class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                             </div>
                         </div>
