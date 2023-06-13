@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,16 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::get('/signup', function () {
-    return view('auth.signup');
-});
+
+Route::get('/signup', [UserController::class, 'register'])->middleware('guest');
+
+Route::post('/signup', [UserController::class, 'store'])->middleware('guest');
+
+Route::get('/login', [UserController::class, 'login'])->middleware('guest');
+
+Route::post('/auth', [UserController::class, 'auth'])->middleware('guest');
+
+Route::get('/user/verify', [UserController::class, 'verify'])->middleware('guest');
 
 Route::get('/candidature', function () {
     return view('auth.candidature');
