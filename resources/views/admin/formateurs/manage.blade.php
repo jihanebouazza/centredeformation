@@ -11,6 +11,9 @@
                 <div>
                     <h2 class="font-bold text-[20px]">Tous les formateurs</h2>
                 </div>
+                <div>
+                    <a href="/formateurs/create" class="rounded-xl text-black2 cursor-pointer px-2 py-3 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-black2 hover:text-white">Ajouter un formateur</a>
+                </div>
             </div>
             <div>
                 <div class="flex flex-col">

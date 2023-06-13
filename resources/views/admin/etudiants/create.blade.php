@@ -9,7 +9,7 @@
             <div class="flex-col items-center w-[60%] justify-center">
                 <div>
                     <h2 class="mb-4 text-center text-3xl font-extrabold text-[#52616B]">
-                        Modifier un etudiant
+                        Ajouter un etudiant
                     </h2>
                 </div>
                 <div class="">
@@ -94,7 +94,7 @@
                             </div>
                         </div>
                         <div class="mt-6 text-center text-md ">
-                            <input type="submit" value="Modifier"
+                            <input type="submit" value="Ajouter"
                                 class="rounded-xl cursor-pointer w-full py-3 font-semibold bg-gray1 hover:bg-black2 hover:text-white">
                         </div>
                     </form>

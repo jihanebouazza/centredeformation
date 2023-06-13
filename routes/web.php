@@ -84,6 +84,9 @@ Route::get('/formateurs', function () {
 Route::get('/formateurs/edit', function () {
     return view('admin.formateurs.edit');
 });
+Route::get('/formateurs/create', function () {
+    return view('admin.formateurs.create');
+});
 
 Route::get('/candidatures', function () {
     return view('admin.candidatures.manage');
@@ -99,4 +102,12 @@ Route::get('/etudiants', function () {
 
 Route::get('/etudiants/edit', function () {
     return view('admin.etudiants.edit');
+});
+Route::get('/etudiants/create', function () {
+    return view('admin.etudiants.create');
+});
+
+
+Route::get('/emploi', function () {
+    return view('admin.emploidutemps.manage');
 });

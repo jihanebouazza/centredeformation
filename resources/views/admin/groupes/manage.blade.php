@@ -23,6 +23,7 @@
                                     <th scope="col" class="px-6 py-4">#</th>
                                     <th scope="col" class="px-6 py-4">Nom</th>
                                     <th scope="col" class="px-6 py-4">Capacité</th>
+                                    <th scope="col" class="px-6 py-4">Date de début</th>
                                     <th scope="col" class="px-6 py-4">Formation</th>
                                     <th scope="col" class="px-6 py-4">Action</th>
 
@@ -32,6 +33,7 @@
                                 <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
                                     <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
                                     <td class="whitespace-nowrap px-6 py-4">Mark</td>
+                                    <td class="whitespace-nowrap px-6 py-4">14</td>
                                     <td class="whitespace-nowrap px-6 py-4">14</td>
                                     <td class="whitespace-nowrap px-6 py-4">Formation 1</td>
                                     <td class="whitespace-nowrap px-6 py-4">

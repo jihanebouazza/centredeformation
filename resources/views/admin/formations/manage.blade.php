@@ -29,8 +29,6 @@
                                     <th scope="col" class="px-6 py-4">Description</th>
                                     <th scope="col" class="px-6 py-4">Prix</th>
                                     <th scope="col" class="px-6 py-4">Durée</th>
-                                    <th scope="col" class="px-6 py-4">Date de début</th>
-                                    <th scope="col" class="px-6 py-4">Date de fin</th>
                                     <th scope="col" class="px-6 py-4">Action</th>
                                 </tr>
                             </thead>
@@ -46,8 +44,6 @@
                                         @endif
 
                                     </td>
-                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
-                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
                                     <td class="whitespace-nowrap px-6 py-4">sqvb</td>
                                     <td class="whitespace-nowrap px-6 py-4">sqvb</td>
                                     <td class="whitespace-nowrap px-6 py-4">

@@ -42,22 +42,6 @@
                             </div>
                         </div>
                         <div class="mt-2">
-                            <label class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                                Date
-                            </label>
-                            <div class="mt-1 flex justify-between items-center">
-                                <div class="w-full">
-                                    <input type="date" name="datedebut"
-                                        class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
-                                </div>
-                                <div class="mx-2 text-md font-bold">à</div>
-                                <div class="w-full">
-                                    <input type="date" name="datefin"
-                                        class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-2">
                             <label for="duree" class="block ml-1 text-md font-medium text-gray-700 mb-1">
                                 Durée
                             </label>
