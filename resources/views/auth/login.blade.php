@@ -61,7 +61,7 @@
                                     moi</label>
                             </div>
                             <div>
-                                <a class="text-sm font-medium text-gray-900 hover:text-gray1" href="forgotpassword">Mot
+                                <a class="text-sm font-medium text-gray-900 hover:text-gray1" href="/forget">Mot
                                     de passe oublié
                                     ?</a>
                             </div>

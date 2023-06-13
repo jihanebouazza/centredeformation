@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\ResetMail;
 use Illuminate\Http\Request;
 use App\Mail\VerificationMail;
 use Illuminate\Validation\Rule;
@@ -24,6 +25,15 @@ class UserController extends Controller
     public function forgetform()
     {
         return view('auth.forgotpassword');
+    }
+    public function logout()
+    {
+        auth()->logout();
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect('/login')->with('message', 'You have been logged out!');
     }
 
     public function resetform(Request $request)
@@ -109,5 +119,37 @@ class UserController extends Controller
             // Redirect the user to the login page with an error message
             return redirect('/login')->with('error', 'Invalid verification link.');
         }
+    }
+    public function forget()
+    {
+        $formFields = request()->validate([
+            'email' => ['required', 'email']
+        ]);
+        $user = User::where('email', $formFields['email'])->first();
+        if (!$user) {
+            return back()->withErrors(['email' => 'We could not find an account with that email address.']);
+        }
+        $formFields['code_reset'] = bcrypt(rand());
+        $user->code_reset = $formFields['code_reset'];
+        $user->save();
+        Mail::to($user->email)->send(new ResetMail($user->id, $user->code_reset));
+
+        return redirect('/login')->with('message', 'We have sent a reset email');
+    }
+    public function reset()
+    {
+        $formFields = request()->validate([
+            'password' => 'required|confirmed|min:6'
+        ]);
+        $formFields['id'] = request()->id;
+        $user = User::find($formFields['id']);
+        if (!$user) {
+            abort(404, 'user not found');
+        }
+        $formFields['password'] = bcrypt($formFields['password']);
+        $user->code_reset = null;
+        $user->password = $formFields['password'];
+        $user->save();
+        return redirect('/login')->with('message', 'Your password has been changed');
     }
 }

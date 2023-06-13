@@ -16,7 +16,9 @@
                 </h2>
             </div>
             <div>
-                <form>
+                <form action="/users/reset" method="Post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $id }}">
 
                     <div class="mr-2 w-full">
                         <label for="password" class="block ml-1 text-md font-medium text-gray-700 mb-1">
@@ -26,6 +28,9 @@
                             <input type="password" name="password"
                                 class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm"
                                 id="password" />
+                                @error('password')
+                                 <p class="text-red-500 text-xs mt-1" style="color: red">{{$message}}</p>
+                                @enderror
                             <div class="absolute top-3 right-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     fill="currentColor" class="bi bi-eye cursor-pointer" viewBox="0 0 16 16">

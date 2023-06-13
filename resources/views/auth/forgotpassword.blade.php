@@ -17,7 +17,8 @@
             </div>
             <div>
 
-                <form>
+                <form action="/users/forget" method="Post">
+                   @csrf 
                     <div>
                         <label for="email" class="block ml-1 text-md font-medium text-gray-700 mb-1">
                             Email
@@ -25,7 +26,10 @@
                         <div class="mt-1">
                             <input type="text" name="email"
                                 class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
-                        </div>
+                                @error('email')
+                                <p class="text-red-500 text-xs mt-1" style="color: red">{{$message}}</p>
+                               @enderror
+                            </div>
                     </div>
                     <div class="mt-5 text-center text-md ">
                         <input type="submit" value="Soumettre"

@@ -18,11 +18,6 @@ Route::get('/', function () {
     return view('accueil');
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
-
-
 Route::get('/signup', [UserController::class, 'register'])->middleware('guest');
 
 Route::post('/signup', [UserController::class, 'store'])->middleware('guest');
@@ -32,6 +27,17 @@ Route::get('/login', [UserController::class, 'login'])->middleware('guest');
 Route::post('/auth', [UserController::class, 'auth'])->middleware('guest');
 
 Route::get('/user/verify', [UserController::class, 'verify'])->middleware('guest');
+
+Route::get('/logout', [UserController::class, 'logout'])->middleware('auth');
+
+Route::get('/forget', [UserController::class, 'forgetform'])->middleware('guest');
+
+Route::post('/users/forget', [UserController::class, 'forget'])->middleware('guest');
+
+Route::get('/reset', [UserController::class, 'resetform'])->middleware('guest');
+
+Route::post('/users/reset', [UserController::class, 'reset'])->middleware('guest');
+
 
 Route::get('/candidature', function () {
     return view('auth.candidature');
