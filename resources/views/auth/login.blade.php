@@ -16,11 +16,6 @@
                     </h2>
                 </div>
                 <div>
-                    @if (session('message'))
-                        <div class="alert alert-success">
-                                {{ session('message') }}
-                         </div>
-                    @endif
                     <form action="/auth" method="Post">
                         @csrf
                         <div>
