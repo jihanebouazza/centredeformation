@@ -107,7 +107,16 @@ Route::get('/etudiants/create', function () {
     return view('admin.etudiants.create');
 });
 
-
 Route::get('/emploi', function () {
     return view('admin.emploidutemps.manage');
 });
+
+Route::get('/allformations', function () {
+    return view('etudiant.formations');
+});
+
+Route::get('/showformation', function () {
+    return view('etudiant.formation');
+});
+
+
