@@ -13,7 +13,7 @@
                     </h2>
                 </div>
                 <div class="">
-                    <form method="POST" action="/formateurs/{{$formateur->id}}">
+                    <form method="POST" action="/formateurs/{{$formateur->id}}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="w-full flex justify-between items-center">

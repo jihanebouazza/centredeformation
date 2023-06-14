@@ -13,7 +13,7 @@
                     </h2>
                 </div>
                 <div class="">
-                    <form method="POST" action="/formateurs">
+                    <form method="POST" action="/formateurs" enctype="multipart/form-data">
                         @csrf
                         <div class="w-full flex justify-between items-center">
                             <div class="mr-2 w-full">
