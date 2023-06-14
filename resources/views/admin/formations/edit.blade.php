@@ -46,7 +46,7 @@
                         </div>
                         <div class="mt-2">
                             <label for="duree" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                                Durée
+                                Durée <span class="text-sm font-thin">(par mois)</span>
                             </label>
                             <div class="mt-1">
                                 <input type="text" name="duree"  value="{{ $formation->duree }}"

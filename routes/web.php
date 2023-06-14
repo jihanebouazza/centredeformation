@@ -6,7 +6,7 @@ use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\FormationController;
-
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,10 +97,9 @@ Route::get('/formateurs/{formateur}/edit', [FormateurController::class, 'edit'])
 
 Route::put('/formateurs/{formateur}', [FormateurController::class, 'update']);
 
+Route::get('/dashboardE', [FormationController::class, 'index']);
 
-
-
-
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 Route::get('/candidatures', function () {
     return view('admin.candidatures.manage');
@@ -123,5 +122,13 @@ Route::get('/allformations', function () {
 Route::get('/showformation', function () {
     return view('etudiant.formation');
 });
+
+
+
+
+
+
+
+
 
 

@@ -65,24 +65,26 @@
                                 id="specialisation" />
                         </div>
                     </div>
-                    <div class="w-full mt-2">
-                        <label for="file_input" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                            CV
-                        </label>
-                        <div class="mt-1">
-                            <input
-                                class="block w-full text-sm text-gray-900 border border-gray1 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none"
-                                id="file_input" type="file" name="cv">
+                    <div class="flex items-center justify-between mt-2">
+                        <div class="w-full mr-2">
+                            <label for="file_input" class="block ml-1 text-md font-medium text-gray-700 mb-1">
+                                CV
+                            </label>
+                            <div class="mt-1">
+                                <input
+                                    class="block w-full text-sm text-gray-900 border border-gray1 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none"
+                                    id="file_input" type="file" name="cv">
+                            </div>
                         </div>
-                    </div>
-                    <div class="w-full mt-2">
-                        <label for="file_input" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                            Lettre de motivation
-                        </label>
-                        <div class="mt-1">
-                            <input
-                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none"
-                                id="file_input" type="file" name="lettredemotivation">
+                        <div class="w-full">
+                            <label for="file_input" class="block ml-1 text-md font-medium text-gray-700 mb-1">
+                                Lettre de motivation
+                            </label>
+                            <div class="mt-1">
+                                <input
+                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none"
+                                    id="file_input" type="file" name="lettredemotivation">
+                            </div>
                         </div>
                     </div>
                     <div class="mt-6 text-center text-md ">
