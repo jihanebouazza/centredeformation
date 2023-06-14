@@ -16,11 +16,13 @@ class CreateGroupes extends Migration
         Schema::create('groupes', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
+            $table->string('statut')->default('open');
             $table->integer('capacite');
+            $table->integer('nombre_etudiant')->nullable();
             $table->date('date_debut');
             $table->date('date_fin');
-            $table->unsignedBigInteger('id_formation');
-            $table->foreign('id_formation')->references('id')->on('formations')->onDelete('cascade');
+            $table->unsignedBigInteger('formation_id');
+            $table->foreign('formation_id')->references('id')->on('formations')->onDelete('cascade');
             $table->timestamps();
         });
     }

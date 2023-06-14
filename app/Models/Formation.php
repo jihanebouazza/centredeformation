@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Groupe;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Formation extends Model
 {
@@ -16,4 +17,8 @@ class Formation extends Model
         'duree',
         'image',
     ];
+    function groupes()
+    {
+        return $this->hasMany(Groupe::class);
+    }
 }

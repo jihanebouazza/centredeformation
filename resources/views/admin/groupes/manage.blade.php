@@ -30,23 +30,25 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($groupes as $groupe)
                                 <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-6 py-4">14</td>
-                                    <td class="whitespace-nowrap px-6 py-4">14</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Formation 1</td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{{$groupe->id}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$groupe->nom}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$groupe->capacite}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$groupe->date_debut}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$groupe->formation->titre}}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         <div class="flex items-center">
                                             <div class="ml-2 mr-4">
-                                                <a href="/groupes/edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                <a href="/groupes/{{$groupe->id}}/edit"><i class="fa-regular fa-pen-to-square"></i></a>
                                             </div>
                                             <div>
-                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')" href="/groupes/delete"><i class="fa-solid fa-trash"></i></a>
+                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')" href="/groupes/{{$groupe->id}}/delete"><i class="fa-solid fa-trash"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

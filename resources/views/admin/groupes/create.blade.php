@@ -13,7 +13,8 @@
                     </h2>
                 </div>
                 <div class="">
-                    <form>
+                    <form method="Post" action="/groupes">
+                        @csrf
                         <div class="mt-2">
                             <label for="nom" class="block ml-1 text-md font-medium text-gray-700 mb-1">
                                 Nom
@@ -28,7 +29,7 @@
                                 Capacité
                             </label>
                             <div class="mt-1">
-                                <input type="text" name="capacite"
+                                <input type="number" name="capacite"
                                     class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                             </div>
                         </div>
@@ -37,7 +38,7 @@
                                 Date de début
                             </label>
                             <div class="mt-1">
-                                <input type="date" name="date"
+                                <input type="date" name="date_debut"
                                     class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                             </div>
                         </div>
@@ -45,11 +46,12 @@
                             <label for="formation" class="block ml-1 text-md font-medium text-gray-700 mb-1">
                                 Formation
                             </label>
-                            <select name="formation" id="formation"
+                            <select name="formation_id" id="formation"
                                 class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
-                                <option value="">Choisissez une formation</option>
-                                <option value="">Formation 1</option>
-                                <option value="">Formation 2</option>
+                                <option disabled selected >Choisissez une formation</option>
+                                @foreach ($formations as $formation)
+                                <option value="{{$formation->id}}" >{{$formation->titre}}</option>
+                                @endforeach
                             </select>
                         </div>
 

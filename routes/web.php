@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GroupeController;
+use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\FormationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,18 +59,27 @@ Route::get('/formations/create', [FormationController::class, 'create']);
 
 Route::get('/formations/{formation}/edit', [FormationController::class, 'edit']);
 
+Route::get('/etudiants', [EtudiantController::class, 'manage']);
+
+Route::post('/etudiants', [EtudiantController::class, 'store']);
+
+Route::get('/etudiants/create', [EtudiantController::class, 'create']);
+
+Route::get('/etudiants/{etudiant}/edit', [EtudiantController::class, 'edit']);
+
+Route::get('/groupes', [GroupeController::class, 'manage']);
+
+Route::get('/groupes/{groupe}/delete', [GroupeController::class, 'destroy']);
+
+Route::post('/groupes', [GroupeController::class, 'store']);
+
+Route::get('/groupes/create', [GroupeController::class, 'create']);
+
+Route::get('/groupes/{groupe}/edit', [GroupeController::class, 'edit']);
+
+Route::put('/groupes/{groupe}', [GroupeController::class, 'update']);
 
 
-Route::get('/groupes', function () {
-    return view('admin.groupes.manage');
-});
-
-Route::get('/groupes/create', function () {
-    return view('admin.groupes.create');
-});
-Route::get('/groupes/edit', function () {
-    return view('admin.groupes.edit');
-});
 
 Route::get('/formateurs', function () {
     return view('admin.formateurs.manage');
@@ -88,16 +100,7 @@ Route::get('/candidatures/edit', function () {
     return view('admin.candidatures.edit');
 });
 
-Route::get('/etudiants', function () {
-    return view('admin.etudiants.manage');
-});
 
-Route::get('/etudiants/edit', function () {
-    return view('admin.etudiants.edit');
-});
-Route::get('/etudiants/create', function () {
-    return view('admin.etudiants.create');
-});
 
 Route::get('/emploi', function () {
     return view('admin.emploidutemps.manage');
