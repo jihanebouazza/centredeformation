@@ -13,7 +13,7 @@
                     </h2>
                 </div>
                 <div class="">
-                    <form method="Post" action="/etudiants/{{$etudiant->id}}" enctype="multipart/form-data">
+                    <form method="Post" action="/etudiants/{{ $etudiant->id }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="w-full flex justify-between items-center">
@@ -22,7 +22,7 @@
                                     Prénom
                                 </label>
                                 <div class="mt-1">
-                                    <input type="text" value="{{$etudiant->first_name}}" name="first_name"
+                                    <input type="text" value="{{ $etudiant->first_name }}" name="first_name"
                                         class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                     Nom
                                 </label>
                                 <div class="mt-1">
-                                    <input type="text" value="{{$etudiant->last_name}}" name="last_name"
+                                    <input type="text" value="{{ $etudiant->last_name }}" name="last_name"
                                         class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                                 Email
                             </label>
                             <div class="mt-1">
-                                <input type="text" value="{{$etudiant->email}}" name="email"
+                                <input type="text" value="{{ $etudiant->email }}" name="email"
                                     class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                             </div>
                         </div>
@@ -50,8 +50,11 @@
                                 Téléphone
                             </label>
                             <div class="mt-1">
-                                <input type="text" value="{{$etudiant->telephone}}" name="telephone"
+                                <input type="text" value="{{ $etudiant->telephone }}" name="telephone"
                                     class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
+                                @error('telephone')
+                                    <p class="text-red-500 text-xs mt-1" style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                         <div class="mt-4">

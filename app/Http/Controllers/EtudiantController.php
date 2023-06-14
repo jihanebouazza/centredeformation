@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Formation;
 use App\Models\Inscription;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -36,7 +37,7 @@ class EtudiantController extends Controller
         $formFields = $request->validate([
             'last_name' => 'required',
             'first_name' => 'required',
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
             'telephone' => ['required', 'regex:/^06\d{8}$/'], 
             'password' => 'required|min:6'
             ]);
@@ -92,7 +93,7 @@ class EtudiantController extends Controller
             $formFields['etudiant_id'] = $etudiant->id  ;
             
             Inscription::create($formFields);
-        return redirect('/etudiants')->with('success', 'Inscription avec succès !');
+        return redirect('/etudiants')->with('success', 'Etudiant Inscrit avec succès !');
     }
 
 }

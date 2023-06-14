@@ -7,59 +7,28 @@
         </div>
         {{-- Les tableaux --}}
         <div class="flex-1 mx-4 overflow-hidden">
-            <form action="">
-                <div class="flex items-center justify-between my-2 mx-1">
-                    <div class="w-[25%]">
-                        <select name="" id=""
-                            class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
-                            <option value="">Formateur</option>
-                            <option value="">Matiere</option>
-                            <option value="">Classe</option>
-                        </select>
-                    </div>
-                    <div class="w-[50%]">
-                        <div class="">
-                            <input type="" name=""
-                                class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
-                        </div>
-                    </div>
-                    <div class="w-[20%]">
-                        <div class="">
-                            <button
-                                class="rounded-xl text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-black2 hover:text-white">Ajouter</button>
-                            <button
-                                class="rounded-xl hover:text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-white bg-black2 text-white">Modifier</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
             <div class="flex items-start justify-between w-full overflow-x-scroll">
                 <div class="w-full">
-                    <table class="w-full text-left text-base font-light">
-                        <thead class="border-b font-medium">
-                            <tr class="border-r-2 border-black">
-                                <th scope="col" class="px-6 py-4">Formatteur</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
-                                <td class="whitespace-nowrap px-6 py-4">sqvb</td>
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="ml-2 mr-4">
-                                            <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
-                                        </div>
-                                        <div>
-                                            <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
-                                                href=""><i class="fa-solid fa-trash"></i></a>
-                                        </div>
+                    <form action="">
+                        <div class="flex items-center justify-between my-2 mx-1">
+                            <div class="w-full flex items-center justify-between">
+                                <div class="w-full mr-2">
+                                    <input type="" name=""
+                                        class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="mr-2">
+                                        <button
+                                            class="rounded-xl text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-black2 hover:text-white">Ajouter</button>
                                     </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="w-full">
+                                    <div>
+                                        <button
+                                            class="rounded-xl hover:text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-white bg-black2 text-white">Modifier</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     <table class="w-full text-left text-base font-light">
                         <thead class="border-b font-medium">
                             <tr class="border-r-2 border-black">
@@ -85,6 +54,26 @@
                     </table>
                 </div>
                 <div class="w-full ">
+                    <form action="">
+                        <div class="flex items-center justify-between my-2 mx-1">
+                            <div class="w-full flex items-center justify-between">
+                                <div class="w-full mr-2">
+                                    <input type="" name=""
+                                        class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="mr-2">
+                                        <button
+                                            class="rounded-xl text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-black2 hover:text-white">Ajouter</button>
+                                    </div>
+                                    <div>
+                                        <button
+                                            class="rounded-xl hover:text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-white bg-black2 text-white">Modifier</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     <table class="w-full text-left text-base font-light">
                         <thead class="border-b font-medium">
                             <tr>
@@ -168,7 +157,52 @@
                     </thead>
                     <tbody>
                         <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
-                            <td class="whitespace-nowrap px-6 py-4">sqvb</td>
+                            <td class="whitespace-nowrap px-6 py-4">17:00 - 18:30</td>
+                            <td class="whitespace-nowrap px-6 py-4">AAAA
+
+                                <div class="flex items-center">
+                                    <div class="ml-2 mr-4">
+                                        <button id="emploiedit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    </div>
+                                    <div>
+                                        <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
+                                            href=""><i class="fa-solid fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
+                            <td class="whitespace-nowrap px-6 py-4">18:30 - 20:00</td>
+                            <td class="whitespace-nowrap px-6 py-4">AAAA
+
+                                <div class="flex items-center">
+                                    <div class="ml-2 mr-4">
+                                        <button id="emploiedit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    </div>
+                                    <div>
+                                        <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
+                                            href=""><i class="fa-solid fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
+                            <td class="whitespace-nowrap px-6 py-4">20:00 - 21:30</td>
+                            <td class="whitespace-nowrap px-6 py-4">AAAA
+
+                                <div class="flex items-center">
+                                    <div class="ml-2 mr-4">
+                                        <button id="emploiedit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                    </div>
+                                    <div>
+                                        <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
+                                            href=""><i class="fa-solid fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
+                            <td class="whitespace-nowrap px-6 py-4">21:30 - 11:00</td>
                             <td class="whitespace-nowrap px-6 py-4">AAAA
 
                                 <div class="flex items-center">
