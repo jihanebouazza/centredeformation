@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\FormationController;
 
 
@@ -84,18 +85,22 @@ Route::get('/groupes/{groupe}/edit', [GroupeController::class, 'edit']);
 
 Route::put('/groupes/{groupe}', [GroupeController::class, 'update']);
 
+Route::get('/formateurs', [FormateurController::class, 'manage']);
+
+Route::get('/formateurs/{formateur}/delete', [FormateurController::class, 'destroy']);
+
+Route::post('/formateurs', [FormateurController::class, 'store']);
+
+Route::get('/formateurs/create', [FormateurController::class, 'create']);
+
+Route::get('/formateurs/{formateur}/edit', [FormateurController::class, 'edit']);
+
+Route::put('/formateurs/{formateur}', [FormateurController::class, 'update']);
 
 
-Route::get('/formateurs', function () {
-    return view('admin.formateurs.manage');
-});
 
-Route::get('/formateurs/edit', function () {
-    return view('admin.formateurs.edit');
-});
-Route::get('/formateurs/create', function () {
-    return view('admin.formateurs.create');
-});
+
+
 
 Route::get('/candidatures', function () {
     return view('admin.candidatures.manage');

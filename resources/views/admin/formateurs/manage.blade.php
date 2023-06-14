@@ -32,25 +32,29 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($formateurs as $formateur)
+                                    
+                               
                                 <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-6 py-4">ahmed@gmail.com</td>
-                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
-                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
-                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{{$formateur->id}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$formateur->first_name}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$formateur->last_name}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$formateur->email}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$formateur->telephone}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$formateur->specialisation}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$formateur->created_at}}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         <div class="flex items-center">
                                             <div class="ml-2 mr-4">
-                                                <a href="/formateurs/edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                <a href="/formateurs/{{$formateur->id}}/edit"><i class="fa-regular fa-pen-to-square"></i></a>
                                             </div>
                                             <div>
-                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')" href="/formateurs/delete"><i class="fa-solid fa-trash"></i></a>
+                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')" href="/formateurs/{{$formateur->id}}/delete"><i class="fa-solid fa-trash"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

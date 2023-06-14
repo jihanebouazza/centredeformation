@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('code')->nullable();
             $table->string('email')->unique();
             $table->string('telephone')->nullable();
+            $table->string('image')->nullable();
+            $table->string('specialisation')->nullable();
             $table->string('role')->default('etudiant');
             $table->string('code_reset')->nullable();
             $table->timestamp('email_verified_at')->nullable();
