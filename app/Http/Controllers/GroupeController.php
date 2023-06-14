@@ -25,7 +25,7 @@ class GroupeController extends Controller
     }
     public function destroy(Groupe $groupe) {
         $groupe->delete();
-        return redirect('/groupes')->with('message', 'group deleted successfully');
+        return redirect('/groupes')->with('success', 'Groupe supprimé avec succès !');
     }
     public function store(Request $request) {
         $formFields = $request->validate([
@@ -45,7 +45,7 @@ class GroupeController extends Controller
 
         Groupe::create($formFields);
 
-        return redirect('/groupes')->with('message', 'Group created successfully!');
+        return redirect('/groupes')->with('success', 'Group crée ave succès !');
     }
     public function update(Request $request, Groupe $groupe) {
         // Make sure logged in user is owner
@@ -67,6 +67,6 @@ class GroupeController extends Controller
 
         $groupe->update($formFields);
 
-        return redirect('/groupes')->with('message', 'Group updated successfully!');
+        return redirect('/groupes')->with('success', 'Groupe mis à jour avec success!');
     }
 }
