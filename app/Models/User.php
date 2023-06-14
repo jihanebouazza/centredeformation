@@ -38,7 +38,7 @@ class User extends Authenticatable
         {
             return $this->inscriptions()
                 ->whereHas('groupe', function ($query) {
-                    $query->where('statut', ['started','full','open']);
+                    $query->whereIn('statut', ['started','full','open']);
                 })->exists();
         }
         public function getGroup()

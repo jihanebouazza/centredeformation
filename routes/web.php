@@ -22,6 +22,7 @@ use App\Http\Controllers\SearchController;
 Route::get('/', function () {
     return view('accueil');
 });
+//------------------------authentification----------------
 
 Route::get('/signup', [UserController::class, 'register'])->middleware('guest');
 
@@ -52,6 +53,8 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
+//------------------------gestion des formations ----------------
+
 Route::get('/formations', [FormationController::class, 'manage']);
 
 Route::post('/formations', [FormationController::class, 'store']);
@@ -65,6 +68,9 @@ Route::put('/formations/{formation}', [FormationController::class, 'update']);
 
 Route::get('/formations/{formation}/delete', [FormationController::class, 'destroy']);
 
+//------------------------gestion des etudiants ----------------
+
+
 Route::get('/etudiants', [EtudiantController::class, 'manage']);
 
 Route::post('/etudiants', [EtudiantController::class, 'store']);
@@ -72,6 +78,13 @@ Route::post('/etudiants', [EtudiantController::class, 'store']);
 Route::get('/etudiants/create', [EtudiantController::class, 'create']);
 
 Route::get('/etudiants/{etudiant}/edit', [EtudiantController::class, 'edit']);
+
+Route::put('/etudiants/{etudiant}', [EtudiantController::class, 'update']);
+
+Route::get('/etudiants/{etudiant}/delete', [EtudiantController::class, 'destroy']);
+
+//------------------------gestion des groupes ----------------
+
 
 Route::get('/groupes', [GroupeController::class, 'manage']);
 
@@ -85,6 +98,9 @@ Route::get('/groupes/{groupe}/edit', [GroupeController::class, 'edit']);
 
 Route::put('/groupes/{groupe}', [GroupeController::class, 'update']);
 
+//------------------------gestion des formateurs ----------------
+
+
 Route::get('/formateurs', [FormateurController::class, 'manage']);
 
 Route::get('/formateurs/{formateur}/delete', [FormateurController::class, 'destroy']);
@@ -96,6 +112,8 @@ Route::get('/formateurs/create', [FormateurController::class, 'create']);
 Route::get('/formateurs/{formateur}/edit', [FormateurController::class, 'edit']);
 
 Route::put('/formateurs/{formateur}', [FormateurController::class, 'update']);
+
+
 
 Route::get('/dashboardE', [FormationController::class, 'index']);
 

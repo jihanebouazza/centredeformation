@@ -12,10 +12,10 @@ class Inscription extends Model
     use HasFactory;
     function groupe()
     {
-        return $this->belongsTo(Groupe::class);
+        return $this->belongsTo(Groupe::class,'groupe_id');
     }
     function etudiant()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'etudiant_id');
     }
 }

@@ -41,8 +41,12 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{$etudiant->last_name}}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{$etudiant->email}}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{$etudiant->telephone}}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ optional($etudiant->getGroup()->first())->nom }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ optional($etudiant->getGroup()->first())->formation->titre }}</td>
+                                    @php
+                                        $nom = $etudiant->hasGroup() ? optional($etudiant->getGroup()->first())->nom : null ;
+                                        $titre = $etudiant->hasGroup() ? optional($etudiant->getGroup()->first())->formation->titre : null ;
+                                    @endphp
+                                    <td class="whitespace-nowrap px-6 py-4">@if ($nom) {{$nom}} @endif</td>
+                                    <td class="whitespace-nowrap px-6 py-4">@if ($titre) {{$titre}} @endif</td></td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         <div class="flex items-center">
                                             <div class="ml-2 mr-4">
