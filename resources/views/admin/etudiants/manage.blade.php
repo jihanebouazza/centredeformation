@@ -28,31 +28,33 @@
                                     <th scope="col" class="px-6 py-4">Téléphone</th>
                                     <th scope="col" class="px-6 py-4">Groupe</th>
                                     <th scope="col" class="px-6 py-4">Formation</th>
-                                    <th scope="col" class="px-6 py-4">Niveau</th>
                                     <th scope="col" class="px-6 py-4">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($etudiants as $etudiant)
+                                    
+                                
                                 <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-6 py-4">Mark</td>
-                                    <td class="whitespace-nowrap px-6 py-4">ahmed@gmail.com</td>
-                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
-                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
-                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
-                                    <td class="whitespace-nowrap px-6 py-4">sqvb</td>
+                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{{$etudiant->id}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$etudiant->first_name}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$etudiant->last_name}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$etudiant->email}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{$etudiant->telephone}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{ optional($etudiant->getGroup()->first())->nom }}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{ optional($etudiant->getGroup()->first())->formation->titre }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         <div class="flex items-center">
                                             <div class="ml-2 mr-4">
-                                                <a href="/etudiants/edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                <a href="/etudiants/{{$etudiant->id}}/edit"><i class="fa-regular fa-pen-to-square"></i></a>
                                             </div>
                                             <div>
-                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')" href="/etudiants/delete"><i class="fa-solid fa-trash"></i></a>
+                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')" href="/etudiants/{{$etudiant->id}}/delete"><i class="fa-solid fa-trash"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

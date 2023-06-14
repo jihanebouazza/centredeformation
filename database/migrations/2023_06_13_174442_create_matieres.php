@@ -16,8 +16,8 @@ class CreateMatieres extends Migration
         Schema::create('matieres', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->unsignedBigInteger('id_formation');
-            $table->foreign('id_formation')->references('id')->on('formations')->onDelete('cascade');
+            $table->unsignedBigInteger('formation_id');
+            $table->foreign('formation_id')->references('id')->on('formations')->onDelete('cascade');
             $table->timestamps();
         });
     }

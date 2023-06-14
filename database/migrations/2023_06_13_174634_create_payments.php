@@ -15,8 +15,8 @@ class CreatePayments extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_inscription');
-            $table->foreign('id_inscription')->references('id')->on('inscriptions')->onDelete('cascade');
+            $table->unsignedBigInteger('inscription_id');
+            $table->foreign('inscription_id')->references('id')->on('inscriptions')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Formation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Inscription;
 
 class Groupe extends Model
 {
@@ -24,21 +25,21 @@ class Groupe extends Model
     {
         return $this->belongsTo(Formation::class);
     }
-    function etudiants()
+    function inscriptions()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Inscription::class);
     }
-    // protected static function boot()
-    // {
-    //     parent::boot();
+    protected static function boot()
+    {
+        parent::boot();
 
-    //     // Define the 'saving' event
-    //     static::saving(function ($groupe) {
-    //         $groupe->nombre_etudiant = $groupe->etudiants()->count();
-    //         if ($groupe->capacite == $groupe->nombre_etudiant) {
-    //             $groupe->statut = 'full';
-    //         }
+        // Define the 'saving' event
+        static::saving(function ($groupe) {
+            $groupe->nombre_etudiant = $groupe->inscriptions()->count();
+            if ($groupe->capacite == $groupe->nombre_etudiant) {
+                $groupe->statut = 'full';
+            }
 
-    //     });
-    // }
+        });
+    }
 }

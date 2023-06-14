@@ -15,10 +15,10 @@ class CreateInscriptions extends Migration
     {
         Schema::create('inscriptions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_groupe');
-            $table->foreign('id_groupe')->references('id')->on('groupes')->onDelete('cascade');
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('groupe_id');
+            $table->foreign('groupe_id')->references('id')->on('groupes')->onDelete('cascade');
+            $table->unsignedBigInteger('etudiant_id');
+            $table->foreign('etudiant_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
