@@ -5,8 +5,9 @@
         <div>
             <x-logo id="logo" class="text-white" />
         </div>
-        <div class="flex items-center justify-between text-white w-[30%]" id="words">
-            <div class="text-md font-semibold mr-2">Accueil</div>
+        <div class="flex items-center justify-between text-white w-[40%]" id="words">
+            <div class="text-md font-semibold mr-2"><a href="/">Accueil</a></div>
+            <div class="text-md font-semibold"><a href="/candidature">Devenir un formateur</a></div>
             <div>
                 <a href="/login" class="mr-4"><i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>Se connecter</a>
                 <a href="/signup"><i class="fa-solid fa-user-plus mr-2"></i>S'inscrire</a>

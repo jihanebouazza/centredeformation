@@ -5,7 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\FormationController;
-
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +83,10 @@ Route::get('/groupes/create', [GroupeController::class, 'create']);
 Route::get('/groupes/{groupe}/edit', [GroupeController::class, 'edit']);
 
 Route::put('/groupes/{groupe}', [GroupeController::class, 'update']);
+
+Route::get('/dashboardE', [FormationController::class, 'index']);
+
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 
 

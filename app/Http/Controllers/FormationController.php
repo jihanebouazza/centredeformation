@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Storage;
 
 class FormationController extends Controller
 {
+
+    public function index()
+    {
+        return view('etudiant.formations', [
+            'formations' => Formation::all()
+        ]);
+    }
+
     public function manage()
     {
         $formations = Formation::all();
