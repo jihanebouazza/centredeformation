@@ -84,9 +84,12 @@ Route::put('/etudiants/{etudiant}', [EtudiantController::class, 'update']);
 
 Route::get('/etudiants/{etudiant}/delete', [EtudiantController::class, 'destroy']);
 
-Route::get('/etudiants/{etudiant}/inscrire', function () {
-    return view('admin.etudiants.inscrire');
-});
+Route::get('/etudiants/{etudiant}/inscrire', [EtudiantController::class, 'inscrireForm']);
+
+Route::post('/etudiants/inscrire/{etudiant}', [EtudiantController::class, 'inscrire']);
+
+Route::get('/groupes-by-formation/{formationId}', [EtudiantController::class, 'getGroups']);
+
 
 //------------------------gestion des groupes ----------------
 

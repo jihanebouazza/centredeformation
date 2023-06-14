@@ -52,12 +52,17 @@
                                             <div class="ml-2 mr-4">
                                                 <a href="/etudiants/{{$etudiant->id}}/edit"><i class="fa-regular fa-pen-to-square"></i></a>
                                             </div>
+                                            @if (!$etudiant->hasGroup())
                                             <div>
                                                 <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')" href="/etudiants/{{$etudiant->id}}/delete"><i class="fa-solid fa-trash"></i></a>
                                             </div>
+                                            @endif
+                                            @if (!$etudiant->hasGroup())
                                             <div class="ml-2 mr-4">
                                                 <a href="/etudiants/{{$etudiant->id}}/inscrire"><i class="fa-solid fa-user-plus"></i></a>
                                             </div>
+                                            @endif
+                                            
                                         </div>
                                     </td>
                                 </tr>

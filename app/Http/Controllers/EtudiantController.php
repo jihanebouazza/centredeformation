@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Formation;
+use App\Models\Inscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,6 +16,14 @@ class EtudiantController extends Controller
         $etudiants = User::where('role', 'etudiant')->get();
 
         return view('admin.etudiants.manage', compact('etudiants'));
+    }
+    public function getGroups($formationId) {
+        $formation = Formation::findOrFail($formationId);
+        $groupes = $formation->OpenGroups();
+
+        return response()->json([
+            'groupes' => $groupes
+        ]);
     }
     public function create() {
         return view('admin.etudiants.create');
@@ -70,4 +80,19 @@ class EtudiantController extends Controller
         $etudiant->delete();
         return redirect('/etudiants')->with('success', 'Etudiant supprimé avec succès !');
     }
+    public function inscrireForm(User $etudiant) {
+        $formations = Formation::all();
+        return view('admin.etudiants.inscrire', ['etudiant' => $etudiant , 'formations' => $formations ]);
+    }
+    public function inscrire(Request $request , User $etudiant)
+    {
+        $formFields = $request->validate([
+            'groupe_id' => 'required'
+            ]);
+            $formFields['etudiant_id'] = $etudiant->id  ;
+            
+            Inscription::create($formFields);
+        return redirect('/etudiants')->with('success', 'Inscription avec succès !');
+    }
+
 }

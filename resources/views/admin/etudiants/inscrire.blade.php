@@ -13,7 +13,7 @@
                     </h2>
                 </div>
                 <div class="">
-                    <form method="Post" action="/etudiants" enctype="multipart/form-data">
+                    <form method="Post" action="/etudiants/inscrire/{{$etudiant->id}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mt-2">
                             <label for="formation" class="block ml-1 text-md font-medium text-gray-700 mb-1">
@@ -22,17 +22,18 @@
                             <select name="formation_id" id="formation"
                                 class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
                                 <option disabled selected>Choisissez une formation</option>
-                                <option value="">Formation</option>
+                                @foreach ($formations as $formation)
+                                <option value="{{$formation->id}}">{{$formation->titre}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mt-2">
                             <label for="formation" class="block ml-1 text-md font-medium text-gray-700 mb-1">
                                 Groupe
                             </label>
-                            <select name="formation_id" id="formation"
+                            <select name="groupe_id" id="groupe"
                                 class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
                                 <option disabled selected>Choisissez un groupe</option>
-                                <option value="">Groupe</option>
                             </select>
                         </div>
                         <div class="mt-6 text-center text-md ">
@@ -44,4 +45,29 @@
             </div>
         </div>
     </div>
+    <script>
+        // When the "Formation" select value changes
+        $('#formation').change(function() {
+            var formationId = $(this).val();
+            var groupeSelect = $('#groupe');
+    
+            // Clear existing options
+            groupeSelect.empty();
+    
+            // Add a default option
+            groupeSelect.append($('<option>').text('Choisissez un groupe').attr('disabled', true).attr('selected', true));
+    
+            // Make an AJAX request to fetch the groupes of the selected formation
+            $.ajax({
+                url: '/groupes-by-formation/' + formationId, // Replace with your route URL
+                method: 'GET',
+                success: function(response) {
+                    // Add each groupe as an option in the "Groupe" select
+                    $.each(response.groupes, function(index, groupe) {
+                        groupeSelect.append($('<option>').text(groupe.nom).attr('value', groupe.id));
+                    });
+                }
+            });
+        });
+    </script>
 @endsection

@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Inscription extends Model
 {
     use HasFactory;
+    protected $fillable = [
+
+        'etudiant_id',
+        'groupe_id',
+    ];
     function groupe()
     {
         return $this->belongsTo(Groupe::class,'groupe_id');

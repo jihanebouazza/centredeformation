@@ -25,7 +25,8 @@ class Formation extends Model
         {
             return $this->groupes()->where('statut', 'open')->exists();
         }
-    public function OpenGroup()
+    public function OpenGroups()
     {
-        return $this->groupes()->where('statut', 'open')->first();    }
+        return $this->groupes()->where('statut', 'open')->get();    
+    }
 }
