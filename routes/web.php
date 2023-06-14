@@ -59,6 +59,11 @@ Route::get('/formations/create', [FormationController::class, 'create']);
 
 Route::get('/formations/{formation}/edit', [FormationController::class, 'edit']);
 
+Route::put('/formations/{formation}', [FormationController::class, 'update']);
+
+
+Route::get('/formations/{formation}/delete', [FormationController::class, 'destroy']);
+
 Route::get('/etudiants', [EtudiantController::class, 'manage']);
 
 Route::post('/etudiants', [EtudiantController::class, 'store']);

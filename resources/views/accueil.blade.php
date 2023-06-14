@@ -147,7 +147,7 @@
             var header = document.getElementById('header');
             var logo = document.getElementById('logo');
             var words = document.getElementById('words');
-            if (window.scrollY > 500) {
+            if (window.scrollY > 0 && window.scrollY <500) {
                 header.classList.remove('bg-black1');
                 header.classList.add('bg-white');
                 logo.classList.remove('text-white');

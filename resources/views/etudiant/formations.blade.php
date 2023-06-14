@@ -31,12 +31,12 @@
             {{-- single formation (foreach) --}}
 
             <div class="w-full bg-white border border-gray-200 rounded-lg shadow">
-                <a href="#">
+                <a href="/showformation">
                     <img class="w-full h-[170px] object-cover rounded-b-none rounded-t-lg"
                         src="{{ URL::asset('/images/formations.png') }}" alt="" />
                 </a>
                 <div class="p-5 pt-3">
-                    <a href="#">
+                    <a href="/showformation">
                         <h5 class="mb-1 text-lg font-bold tracking-tight text-gray-900">Noteworthy
                             technology </h5>
                     </a>

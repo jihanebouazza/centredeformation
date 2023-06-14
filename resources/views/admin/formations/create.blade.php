@@ -13,7 +13,7 @@
                     </h2>
                 </div>
                 <div class="">
-                    <form method="POST" action="/formations">
+                    <form method="POST" action="/formations" enctype="multipart/form-data">
                         @csrf
                         <div class="mt-2">
                             <label for="titre" class="block ml-1 text-md font-medium text-gray-700 mb-1">
