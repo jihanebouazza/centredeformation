@@ -79,9 +79,14 @@ Route::get('/etudiants/create', [EtudiantController::class, 'create']);
 
 Route::get('/etudiants/{etudiant}/edit', [EtudiantController::class, 'edit']);
 
+
 Route::put('/etudiants/{etudiant}', [EtudiantController::class, 'update']);
 
 Route::get('/etudiants/{etudiant}/delete', [EtudiantController::class, 'destroy']);
+
+Route::get('/etudiants/{etudiant}/inscrire', function () {
+    return view('admin.etudiants.inscrire');
+});
 
 //------------------------gestion des groupes ----------------
 
@@ -140,13 +145,3 @@ Route::get('/allformations', function () {
 Route::get('/showformation', function () {
     return view('etudiant.formation');
 });
-
-
-
-
-
-
-
-
-
-

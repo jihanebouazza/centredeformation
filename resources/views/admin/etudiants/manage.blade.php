@@ -55,6 +55,9 @@
                                             <div>
                                                 <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')" href="/etudiants/{{$etudiant->id}}/delete"><i class="fa-solid fa-trash"></i></a>
                                             </div>
+                                            <div class="ml-2 mr-4">
+                                                <a href="/etudiants/{{$etudiant->id}}/inscrire"><i class="fa-solid fa-user-plus"></i></a>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
