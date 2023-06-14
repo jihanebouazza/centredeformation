@@ -42,7 +42,7 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{$formateur->email}}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{$formateur->telephone}}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{$formateur->specialisation}}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{$formateur->created_at}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{ substr($formateur->created_at, 0, 10) }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         <div class="flex items-center">
                                             <div class="ml-2 mr-4">
