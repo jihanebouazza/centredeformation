@@ -9,21 +9,28 @@
         <div class="flex-1 mx-4 overflow-hidden">
             <div class="flex items-start justify-between w-full overflow-x-scroll">
                 <div class="w-full">
-                    <form action="">
+                    <form action="/matieres" method="Post">
+                        @csrf
                         <div class="flex items-center justify-between my-2 mx-1">
                             <div class="w-full flex items-center justify-between">
                                 <div class="w-full mr-2">
-                                    <input type="" name=""
+                                    <input type="text" name="nom" placeholder="Nom de Matiere"
                                         class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
+                                </div>
+                                <div class="mt-2">
+                                    <select name="formation_id" id="formation"
+                                        class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
+                                        <option disabled selected>Choisissez une formation</option>
+                                        @foreach ($formations as $formation)
+                                        <option value="{{$formation->id}}">{{$formation->titre}}</option>
+                                        @endforeach
+                                        
+                                    </select>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="mr-2">
-                                        <button
-                                            class="rounded-xl text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-black2 hover:text-white">Ajouter</button>
-                                    </div>
-                                    <div>
-                                        <button
-                                            class="rounded-xl hover:text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-white bg-black2 text-white">Modifier</button>
+                                        <input type="submit" value="Ajouter"
+                                            class="rounded-xl text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-black2 hover:text-white">
                                     </div>
                                 </div>
                             </div>
@@ -36,8 +43,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($matieres as $matiere)
                             <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
-                                <td class="whitespace-nowrap px-6 py-4">AAAAAAAA</td>
+                                <td class="whitespace-nowrap px-6 py-4">{{$matiere->nom}}</td>
                                 <td class="whitespace-nowrap px-6 py-4">
                                     <div class="flex items-center">
                                         <div class="ml-2 mr-4">
@@ -45,30 +53,28 @@
                                         </div>
                                         <div>
                                             <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
-                                                href=""><i class="fa-solid fa-trash"></i></a>
+                                                href="/matieres/{{ $matiere->id }}/delete"><i class="fa-solid fa-trash"></i></a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
                 <div class="w-full ">
-                    <form action="">
+                    <form action="/classes" method="Post">
+                        @csrf
                         <div class="flex items-center justify-between my-2 mx-1">
                             <div class="w-full flex items-center justify-between">
                                 <div class="w-full mr-2">
-                                    <input type="" name=""
+                                    <input type="text" name="nom" placeholder="Nom de Classe"
                                         class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <div class="mr-2">
-                                        <button
-                                            class="rounded-xl text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-black2 hover:text-white">Ajouter</button>
-                                    </div>
-                                    <div>
-                                        <button
-                                            class="rounded-xl hover:text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-white bg-black2 text-white">Modifier</button>
+                                        <input type="submit" value="Ajouter"
+                                            class="rounded-xl text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-black2 hover:text-white">
                                     </div>
                                 </div>
                             </div>
@@ -81,8 +87,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($classes as $classe)
                             <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
-                                <td class="whitespace-nowrap px-6 py-4">sqvb</td>
+                                <td class="whitespace-nowrap px-6 py-4">{{$classe->nom}}</td>
                                 <td class="whitespace-nowrap px-6 py-4">
                                     <div class="flex items-center">
                                         <div class="ml-2 mr-4">
@@ -90,25 +97,12 @@
                                         </div>
                                         <div>
                                             <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
-                                                href=""><i class="fa-solid fa-trash"></i></a>
+                                                href="/classes/{{ $classe->id }}/delete"><i class="fa-solid fa-trash"></i></a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
-                                <td class="whitespace-nowrap px-6 py-4">sqvb</td>
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="ml-2 mr-4">
-                                            <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
-                                        </div>
-                                        <div>
-                                            <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
-                                                href=""><i class="fa-solid fa-trash"></i></a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

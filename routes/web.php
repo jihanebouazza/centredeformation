@@ -2,11 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\GroupeController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\FormationController;
-use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,6 +125,18 @@ Route::get('/formateurs/{formateur}/edit', [FormateurController::class, 'edit'])
 Route::put('/formateurs/{formateur}', [FormateurController::class, 'update']);
 
 
+//---------------Emploi------------------------
+
+Route::get('/emploi' , [EmploiController::class, 'manage']);
+
+Route::post('/matieres', [MatiereController::class, 'store']);
+
+Route::get('/matieres/{matiere}/delete', [MatiereController::class, 'destroy']);
+
+Route::post('/classes', [ClasseController::class, 'store']);
+
+Route::get('/classes/{classe}/delete', [ClasseController::class, 'destroy']);
+
 
 Route::get('/dashboardE', [FormationController::class, 'index']);
 
@@ -137,9 +152,7 @@ Route::get('/candidatures/edit', function () {
 
 
 
-Route::get('/emploi', function () {
-    return view('admin.emploidutemps.manage');
-});
+
 
 Route::get('/allformations', function () {
     return view('etudiant.formations');

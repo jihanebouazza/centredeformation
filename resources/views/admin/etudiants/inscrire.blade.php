@@ -37,7 +37,7 @@
                             </select>
                         </div>
                         <div class="mt-6 text-center text-md ">
-                            <input type="submit" value="Ajouter"
+                            <input type="submit" value="Inscrire"
                                 class="rounded-xl cursor-pointer w-full py-3 font-semibold bg-gray1 hover:bg-black2 hover:text-white">
                         </div>
                     </form>
@@ -64,7 +64,8 @@
                 success: function(response) {
                     // Add each groupe as an option in the "Groupe" select
                     $.each(response.groupes, function(index, groupe) {
-                        groupeSelect.append($('<option>').text(groupe.nom).attr('value', groupe.id));
+                        var optionText = groupe.nom + ' ' + groupe.date_debut;
+                        groupeSelect.append($('<option>').text(optionText).attr('value', groupe.id));
                     });
                 }
             });
