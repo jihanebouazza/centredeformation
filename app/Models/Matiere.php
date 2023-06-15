@@ -13,7 +13,7 @@ class Matiere extends Model
         'nom',
         'formation_id',
     ];
-    function formations()
+    function formation()
     {
         return $this->belongsTo(Formation::class);
     }

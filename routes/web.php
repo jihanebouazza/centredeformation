@@ -133,6 +133,8 @@ Route::post('/matieres', [MatiereController::class, 'store']);
 
 Route::get('/matieres/{matiere}/delete', [MatiereController::class, 'destroy']);
 
+Route::get('/matieres-by-groupe/{groupeId}', [MatiereController::class, 'getMatieres']);
+
 Route::post('/classes', [ClasseController::class, 'store']);
 
 Route::get('/classes/{classe}/delete', [ClasseController::class, 'destroy']);

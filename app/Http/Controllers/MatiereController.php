@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Groupe;
 use App\Models\Matiere;
 use Illuminate\Http\Request;
 
@@ -24,5 +25,14 @@ class MatiereController extends Controller
     {
         $matiere->delete();
         return redirect('/emploi')->with('success', 'Matiere supprimé avec succès !');
+    }
+        public function getMatieres($groupeId)
+    {
+        $groupe = Groupe::findOrFail($groupeId);
+        $matieres = $groupe->formation->matieres;
+
+        return response()->json([
+            'matieres' => $matieres
+        ]);
     }
 }
