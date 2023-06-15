@@ -16,6 +16,16 @@ class FormationController extends Controller
         ]);
     }
 
+    public function show(Formation $formation)
+    {
+        $formation->load('groupes'); // Eager load the groupes relationship
+
+        return view('etudiant.formation', [
+            'formation' => $formation,
+            'groupes' => $formation->groupes
+        ]);
+    }
+
     public function manage()
     {
         $formations = Formation::all();
@@ -80,5 +90,4 @@ class FormationController extends Controller
 
         return redirect('/formations')->with('success', 'Formation mise à jour avec succès !');
     }
-
 }

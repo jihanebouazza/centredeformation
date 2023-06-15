@@ -81,12 +81,12 @@
                     class="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-3 xl:gap-[30px] mb-12">
                     @foreach ($formations as $formation)
                         <div class="w-full bg-white border border-gray-200 rounded-lg shadow">
-                            <a href="/showformation">
+                            <a href="/formation/{{$formation->id}}">
                                 <img class="w-full h-[170px] object-cover rounded-b-none rounded-t-lg"
                                     src="{{ asset('storage/' . $formation->image) }}" alt="" />
                             </a>
                             <div class="p-5 pt-3">
-                                <a href="/showformation">
+                                <a href="/formation/{{$formation->id}}">
                                     <h5 class="mb-1 text-lg font-bold tracking-tight text-gray-900">
                                         {{ $formation->titre }}
                                     </h5>
@@ -98,7 +98,7 @@
                                         {{ $formation->description }}
                                     @endif
                                 </p>
-                                <a href="/showformation"
+                                <a href="/formation/{{$formation->id}}"
                                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-black1 rounded-lg hover:bg-black2 focus:ring-4 focus:outline-none focus:ring-gray1 ">
                                     Lire la suite
                                     <i class="fa-solid fa-arrow-right ml-2"></i>

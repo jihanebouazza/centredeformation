@@ -71,6 +71,8 @@ Route::put('/formations/{formation}', [FormationController::class, 'update']);
 
 Route::get('/formations/{formation}/delete', [FormationController::class, 'destroy']);
 
+Route::get('/formation/{formation}', [FormationController::class, 'show']);
+
 //------------------------gestion des etudiants ----------------
 
 
