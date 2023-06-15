@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TimeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClasseController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\FormationController;
 
@@ -132,11 +133,17 @@ Route::put('/formateurs/{formateur}', [FormateurController::class, 'update']);
 
 Route::get('/emploi' , [EmploiController::class, 'manage']);
 
+Route::post('/seances', [EmploiController::class, 'store']);
+
 Route::post('/matieres', [MatiereController::class, 'store']);
 
 Route::get('/matieres/{matiere}/delete', [MatiereController::class, 'destroy']);
 
 Route::get('/matieres-by-groupe/{groupeId}', [MatiereController::class, 'getMatieres']);
+
+Route::get('/get-available-time-slots', [TimeController::class, 'getAvailableTimeSlots']);
+
+Route::get('/get-options/{type}', [EmploiController::class, 'getOptions']);
 
 Route::post('/classes', [ClasseController::class, 'store']);
 

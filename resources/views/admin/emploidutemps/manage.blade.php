@@ -119,15 +119,20 @@
                 </div>
                 <div class="w-[50%] flex items-center justify-between">
                     <div class="w-full mr-2">
-                        <select name="" id=""
+                        <select name="" id="type"
                             class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
-                            <option value="">Classe</option>
+                            <option disabled selected>Choisissez un type</option>
+                            <option value="classe">Classe</option>
+                            <option value="groupe">Groupe</option>
+                            <option value="formateur">Formateur</option>
                         </select>
                     </div>
-                    <div>
-                        <button
-                            class="rounded-xl hover:text-black2 cursor-pointer px-2 py-2 font-bold border-[3px] hover:border-black2 border-black2 hover:bg-white bg-black2 text-white">Filtrer</button>
+                    <div class="w-full mr-2">
+                        <select name="" id="options"
+                            class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
+                        </select>
                     </div>
+                    
 
                 </div>
                 <div class="w-[20%]">
@@ -155,64 +160,44 @@
                     <tbody>
                         <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
                             <td class="whitespace-nowrap px-6 py-4">17:00 - 18:30</td>
-                            <td class="whitespace-nowrap px-6 py-4">AAAA
-
-                                <div class="flex items-center">
-                                    <div class="ml-2 mr-4">
-                                        <button id="emploiedit"><i class="fa-regular fa-pen-to-square"></i></button>
-                                    </div>
-                                    <div>
-                                        <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
-                                            href=""><i class="fa-solid fa-trash"></i></a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="lundi" data-heure="17:00 - 18:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="mardi" data-heure="17:00 - 18:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="mercredi" data-heure="17:00 - 18:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="jeudi" data-heure="17:00 - 18:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="vendredi" data-heure="17:00 - 18:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="samedi" data-heure="17:00 - 18:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="dimanche" data-heure="17:00 - 18:30"></td>
+                          </tr>
+                          <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
                             <td class="whitespace-nowrap px-6 py-4">18:30 - 20:00</td>
-                            <td class="whitespace-nowrap px-6 py-4">AAAA
-
-                                <div class="flex items-center">
-                                    <div class="ml-2 mr-4">
-                                        <button id="emploiedit"><i class="fa-regular fa-pen-to-square"></i></button>
-                                    </div>
-                                    <div>
-                                        <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
-                                            href=""><i class="fa-solid fa-trash"></i></a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="lundi" data-heure="18:30 - 20:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="mardi" data-heure="18:30 - 20:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="mercredi" data-heure="18:30 - 20:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="jeudi" data-heure="18:30 - 20:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="vendredi" data-heure="18:30 - 20:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="samedi" data-heure="18:30 - 20:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="dimanche" data-heure="18:30 - 20:00"></td>
+                          </tr>
+                          <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
                             <td class="whitespace-nowrap px-6 py-4">20:00 - 21:30</td>
-                            <td class="whitespace-nowrap px-6 py-4">AAAA
-
-                                <div class="flex items-center">
-                                    <div class="ml-2 mr-4">
-                                        <button id="emploiedit"><i class="fa-regular fa-pen-to-square"></i></button>
-                                    </div>
-                                    <div>
-                                        <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
-                                            href=""><i class="fa-solid fa-trash"></i></a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="lundi" data-heure="20:00 - 21:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="mardi" data-heure="20:00 - 21:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="mercredi" data-heure="20:00 - 21:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="jeudi" data-heure="20:00 - 21:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="vendredi" data-heure="20:00 - 21:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="samedi" data-heure="20:00 - 21:30"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="dimanche" data-heure="20:00 - 21:30"></td>
+                          </tr>
+                          <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
                             <td class="whitespace-nowrap px-6 py-4">21:30 - 23:00</td>
-                            <td class="whitespace-nowrap px-6 py-4">AAAA
-
-                                <div class="flex items-center">
-                                    <div class="ml-2 mr-4">
-                                        <button id="emploiedit"><i class="fa-regular fa-pen-to-square"></i></button>
-                                    </div>
-                                    <div>
-                                        <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
-                                            href=""><i class="fa-solid fa-trash"></i></a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="lundi" data-heure="21:30 - 23:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="mardi" data-heure="21:30 - 23:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="mercredi" data-heure="21:30 - 23:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="jeudi" data-heure="21:30 - 23:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="vendredi" data-heure="21:30 - 23:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="samedi" data-heure="21:30 - 23:00"></td>
+                            <td class="whitespace-nowrap px-6 py-4" data-jour="dimanche" data-heure="21:30 - 23:00"></td>
+                          </tr>
                     </tbody>
                 </table>
             </div>
@@ -234,8 +219,8 @@
                     </h2>
                 </div>
                 {{-- Ajouter une seance --}}
-                <form>
-
+                <form method="Post" action="/seances">
+                    @csrf
                     <div class="mt-2 flex justify-between">
                         <div class="w-full mr-2">
                             <label for="classe" class="block ml-1 text-md font-medium text-gray-700 mb-1">
@@ -603,5 +588,121 @@
                     }
                 });
             });
+            $('#groupe, #formateur, #classe').change(function() {
+        var groupeId = $('#groupe').val();
+        var formateurId = $('#formateur').val();
+        var classeId = $('#classe').val();
+        var timeSelect = $('#time');
+
+        // Clear existing options
+        timeSelect.empty();
+
+        // Add a default option
+        timeSelect.append($('<option>').text('Choisissez une heure').attr('disabled', true).attr('selected', true));
+
+        // Make an AJAX request to fetch the available time slots
+        $.ajax({
+            url: '/get-available-time-slots', // Replace with your route or controller method URL
+            method: 'GET',
+            data: {
+                groupeId: groupeId,
+                formateurId: formateurId,
+                classeId: classeId
+            },
+            success: function(response) {
+                console.log(response.times);
+                // Add each available time slot as an option in the "Jour et Heure" select
+                $.each(response.times, function(index, time) {
+                    var optionText = time.jour + ' ' + time.heure;
+                    timeSelect.append($('<option>').text(optionText).attr('value', time.id));
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+    function fetchOptionsAndSeances(type, optionId) {
+    $.ajax({
+        url: '/get-options/' + type,
+        method: 'GET',
+        data: {
+            optionId: optionId
+        },
+        success: function(response) {
+            // Update the options select element
+            var optionsSelect = $('#options');
+            var selectedOption = optionsSelect.val();
+            optionsSelect.empty();
+            optionsSelect.append($('<option>').text('Choisissez une option').attr('disabled', true).attr('selected', true));
+            $.each(response.options, function(index, option) {
+                var optionElement
+                            if (type === 'formateur') {
+                    var fullName = option.first_name + ' ' + option.last_name;
+                    optionElement = $('<option>').text(fullName).attr('value', option.id);
+                } else {
+                    optionElement = $('<option>').text(option.nom).attr('value', option.id);
+                }
+                if (option.id == selectedOption) {
+                    optionElement.attr('selected', true);
+                }
+                optionsSelect.append(optionElement);
+            });
+
+            // Update the seances section
+            var seancesSection = $('#seances');
+            seancesSection.empty();
+            console.log(response.seances);
+            $.each(response.seances, function(index, seance) {
+                    var time = seance.time;
+                    var classe = seance.classe;
+                    var groupe = seance.groupe;
+                    var formateur = seance.formateur;
+                    var matiere = seance.matiere;
+
+                    // Extract the relevant attributes from the models
+                    var jour = time.jour.toLowerCase();
+                    var heure = time.heure;
+                    var formateurFullName = formateur.last_name + ' ' + formateur.first_name;
+
+                    // Find the table cell with corresponding data attributes
+                    var cell = $('td[data-jour="' + jour + '"][data-heure="' + heure + '"]');
+
+                    // Insert the seance data into the cell
+                    cell.html(classe.nom + '<br>' + groupe.nom + '<br>' + formateurFullName + '<br>' + matiere.nom);
+
+                    // Add the buttons and their functionality
+                    var buttons = $('<div class="flex items-center">' +
+                                    '<div class="ml-2 mr-4">' +
+                                        '<button id="emploiedit"><i class="fa-regular fa-pen-to-square"></i></button>' +
+                                    '</div>' +
+                                    '<div>' +
+                                        '<a onclick="return confirm(\'est ce que vous etes sure que vous voulez supprimer?\')" href=""><i class="fa-solid fa-trash"></i></a>' +
+                                    '</div>' +
+                                    '</div>');
+
+                    cell.append(buttons);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+
+            // Event handler for the type select element
+            $('#type').change(function() {
+                var type = $(this).val();
+                var optionId = $('#options').val();
+                fetchOptionsAndSeances(type, optionId);
+            });
+
+            // Event handler for the options select element
+            $('#options').change(function() {
+                var type = $('#type').val();
+                var optionId = $(this).val();
+                fetchOptionsAndSeances(type, optionId);
+            });
+
         </script>
     @endsection

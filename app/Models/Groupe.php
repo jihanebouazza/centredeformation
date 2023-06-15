@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Seance;
 use App\Models\Formation;
+use App\Models\Inscription;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\Inscription;
 
 class Groupe extends Model
 {
@@ -28,6 +29,10 @@ class Groupe extends Model
     function inscriptions()
     {
         return $this->hasMany(Inscription::class);
+    }
+    function seances()
+    {
+        return $this->hasMany(Seance::class);
     }
     
 }

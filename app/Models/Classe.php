@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Seance;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Classe extends Model
 {
@@ -11,4 +12,8 @@ class Classe extends Model
     protected $fillable = [
         'nom',
     ];
+    function seances()
+    {
+        return $this->hasMany(Seance::class);
+    }
 }

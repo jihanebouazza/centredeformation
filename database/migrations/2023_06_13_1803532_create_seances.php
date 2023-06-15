@@ -17,8 +17,8 @@ class CreateSeances extends Migration
             $table->id();
             $table->unsignedBigInteger('groupe_id');
             $table->foreign('groupe_id')->references('id')->on('groupes')->onDelete('cascade');
-            $table->unsignedBigInteger('formateur_idteur');
-            $table->foreign('formateur_idteur')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('formateur_id');
+            $table->foreign('formateur_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('classe_id');
             $table->foreign('classe_id')->references('id')->on('classes')->onDelete('cascade');
             $table->unsignedBigInteger('matiere_id');

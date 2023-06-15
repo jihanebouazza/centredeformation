@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Seance;
 use App\Models\Inscription;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -30,6 +31,10 @@ class User extends Authenticatable
         'image',
         'role',
     ];
+    function seances()
+    {
+        return $this->hasMany(Seance::class);
+    }
     function inscriptions()
     {
         return $this->hasMany(Inscription::class , 'etudiant_id');
