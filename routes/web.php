@@ -161,8 +161,8 @@ Route::get('/candidatures', function () {
     return view('admin.candidatures.manage');
 });
 
-Route::get('/candidatures/edit', function () {
-    return view('admin.candidatures.edit');
+Route::get('/candidatures/show', function () {
+    return view('admin.candidatures.show');
 });
 
 

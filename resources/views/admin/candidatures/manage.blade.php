@@ -40,10 +40,13 @@
                                     <td class="whitespace-nowrap px-6 py-4">
                                         <div class="flex items-center">
                                             <div class="ml-2 mr-4">
-                                                <a href="/candidatures/edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                <a href="/candidatures/show"><i class="fa-regular fa-eye"></i></a>
+                                            </div>
+                                            <div class="mr-2">
+                                                <a href=""><i class="fa-solid fa-check"></i></a>
                                             </div>
                                             <div>
-                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')" href="/candidatures/delete"><i class="fa-solid fa-trash"></i></a>
+                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez refusé?')" href="/candidatures/delete"><i class="fa-solid fa-xmark"></i></a>
                                             </div>
                                         </div>
                                     </td>
