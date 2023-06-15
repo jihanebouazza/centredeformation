@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Models\Groupe;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,7 +16,21 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            $now = now();
+            $groupeQuery = Groupe::where('date_debut', '<=', $now)
+                ->where('statut', '!=', 'started');
+    
+            $groupeQuery->update(['statut' => 'started']);
+        })->daily();
+    
+        $schedule->call(function () {
+            $now = now();
+            $groupeQuery = Groupe::where('date_fin', '<=', $now)
+                ->where('statut', '!=', 'finished');
+    
+            $groupeQuery->update(['statut' => 'finished']);
+        })->daily();
     }
 
     /**
