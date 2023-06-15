@@ -22,9 +22,9 @@
                                         class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
                                         <option disabled selected>Choisissez une formation</option>
                                         @foreach ($formations as $formation)
-                                        <option value="{{$formation->id}}">{{$formation->titre}}</option>
+                                            <option value="{{ $formation->id }}">{{ $formation->titre }}</option>
                                         @endforeach
-                                        
+
                                     </select>
                                 </div>
                                 <div class="flex items-center justify-between">
@@ -44,20 +44,22 @@
                         </thead>
                         <tbody>
                             @foreach ($matieres as $matiere)
-                            <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
-                                <td class="whitespace-nowrap px-6 py-4">{{$matiere->nom}}</td>
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="ml-2 mr-4">
-                                            <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                                <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
+                                    <td class="whitespace-nowrap px-6 py-4">{{ $matiere->nom }}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="ml-2 mr-4">
+                                                <button id="matiereedit"><i
+                                                        class="fa-regular fa-pen-to-square"></i></button>
+                                            </div>
+                                            <div>
+                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
+                                                    href="/matieres/{{ $matiere->id }}/delete"><i
+                                                        class="fa-solid fa-trash"></i></a>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
-                                                href="/matieres/{{ $matiere->id }}/delete"><i class="fa-solid fa-trash"></i></a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -88,20 +90,21 @@
                         </thead>
                         <tbody>
                             @foreach ($classes as $classe)
-                            <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
-                                <td class="whitespace-nowrap px-6 py-4">{{$classe->nom}}</td>
-                                <td class="whitespace-nowrap px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="ml-2 mr-4">
-                                            <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                                <tr class="border-b transition duration-300 ease-in-out hover:bg-[#F1F6F9]">
+                                    <td class="whitespace-nowrap px-6 py-4">{{ $classe->nom }}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="ml-2 mr-4">
+                                                <button id="classeedit"><i class="fa-regular fa-pen-to-square"></i></button>
+                                            </div>
+                                            <div>
+                                                <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
+                                                    href="/classes/{{ $classe->id }}/delete"><i
+                                                        class="fa-solid fa-trash"></i></a>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
-                                                href="/classes/{{ $classe->id }}/delete"><i class="fa-solid fa-trash"></i></a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -232,7 +235,7 @@
                 </div>
                 {{-- Ajouter une seance --}}
                 <form>
-                    
+
                     <div class="mt-2 flex justify-between">
                         <div class="w-full mr-2">
                             <label for="classe" class="block ml-1 text-md font-medium text-gray-700 mb-1">
@@ -240,9 +243,9 @@
                             </label>
                             <select name="classe_id" id="classe"
                                 class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
-                                <option selected disabled >Choisissez une classe</option>
+                                <option selected disabled>Choisissez une classe</option>
                                 @foreach ($classes as $classe)
-                                <option value="{{ $classe->id}}" >{{ $classe->nom}}</option>
+                                    <option value="{{ $classe->id }}">{{ $classe->nom }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -253,9 +256,9 @@
                             </label>
                             <select name="groupe_id" id="groupe"
                                 class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
-                                <option selected disabled >Choisissez un groupe</option>
+                                <option selected disabled>Choisissez un groupe</option>
                                 @foreach ($groupes as $groupe)
-                                <option value="{{ $groupe->id}}" >{{ $groupe->nom}}</option>
+                                    <option value="{{ $groupe->id }}">{{ $groupe->nom }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -268,7 +271,8 @@
                             class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
                             <option selected disabled>Choisissez un formateur</option>
                             @foreach ($formateurs as $formateur)
-                                <option value="{{ $formateur->id}}" >{{ $formateur->first_name}} {{ $formateur->last_name}}</option>
+                                <option value="{{ $formateur->id }}">{{ $formateur->first_name }}
+                                    {{ $formateur->last_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -406,6 +410,83 @@
                 </form>
             </div>
         </div>
+
+        {{-- Modifier une matiere --}}
+        <div style="background-color: rgba(0,0,0, 0.5);"
+            class="fixed top-0 left-0 w-[100%] h-screen flex justify-center items-center invisible opacity-0 transition-opacity duration-500"
+            id="modalmatiere">
+            <div class="bg-white w-[50%] p-4 rounded-xl">
+                <div class="flex justify-end">
+                    <div>
+                        <button id="closematiere">
+                            <i class="fa-solid fa-xmark fa-2x pl-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h2 class="mb-4 text-center text-3xl font-extrabold text-black1">
+                        Modifier une matiere
+                    </h2>
+                </div>
+                <form>
+                    <div class="mt-4">
+                        <label for="nom" class="block ml-1 text-md font-medium text-gray-700 mb-1">
+                            Nom
+                        </label>
+                        <div class="mt-1">
+                            <input type="text" name="nom"
+                                class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
+                        </div>
+                    </div>
+
+
+                    <div class="mt-6 text-center text-md ">
+                        <input type="submit" value="Modifier"
+                            class="rounded-xl cursor-pointer w-full py-3 font-semibold bg-gray1 hover:bg-black2 hover:text-white">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {{-- Modifier une classe --}}
+        <div style="background-color: rgba(0,0,0, 0.5);"
+            class="fixed top-0 left-0 w-[100%] h-screen flex justify-center items-center invisible opacity-0 transition-opacity duration-500"
+            id="modalclasse">
+            <div class="bg-white w-[50%] p-4 rounded-xl">
+                <div class="flex justify-end">
+                    <div>
+                        <button id="closeclasse">
+                            <i class="fa-solid fa-xmark fa-2x pl-2"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h2 class="mb-4 text-center text-3xl font-extrabold text-black1">
+                        Modifier une classe
+                    </h2>
+                </div>
+
+                <form>
+                    <div class="mt-4">
+                        <label for="nom" class="block ml-1 text-md font-medium text-gray-700 mb-1">
+                            Nom
+                        </label>
+                        <div class="mt-1">
+                            <input type="text" name="nom"
+                                class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
+                        </div>
+                    </div>
+
+
+                    <div class="mt-6 text-center text-md ">
+                        <input type="submit" value="Modifier"
+                            class="rounded-xl cursor-pointer w-full py-3 font-semibold bg-gray1 hover:bg-black2 hover:text-white">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
         <script>
             let emploiedit = document.getElementById("emploiedit");
             let emploiadd = document.getElementById('emploiadd');
@@ -413,6 +494,15 @@
             let modaledit = document.getElementById("modaledit");
             let closeadd = document.getElementById("closeadd");
             let closeedit = document.getElementById("closeedit");
+
+            let matiereedit = document.getElementById("matiereedit");
+            let classeedit = document.getElementById("classeedit");
+            let modalclasse = document.getElementById("modalclasse");
+            let modalmatiere = document.getElementById("modalmatiere");
+            let closeclasse = document.getElementById("closeclasse");
+            let closematiere = document.getElementById("closematiere");
+
+
 
             emploiadd.addEventListener('click', () => {
                 modaladd.classList.remove('invisible');
@@ -448,18 +538,58 @@
                 modaledit.classList.remove('visible');
                 modaledit.classList.remove('opacity-100');
             })
+
+            matiereedit.addEventListener('click', () => {
+                modalmatiere.classList.remove('invisible');
+                modalmatiere.classList.remove('opacity-0');
+                modalmatiere.classList.remove('transition-opacity');
+                modalmatiere.classList.remove('duration-500');
+                modalmatiere.classList.add('visible');
+                modalmatiere.classList.add('opacity-100');
+            })
+
+            closematiere.addEventListener('click', () => {
+                modalmatiere.classList.add('invisible');
+                modalmatiere.classList.add('opacity-0');
+                modalmatiere.classList.add('transition-opacity');
+                modalmatiere.classList.add('duration-500');
+                modalmatiere.classList.remove('visible');
+                modalmatiere.classList.remove('opacity-100');
+            })
+            classeedit.addEventListener('click', () => {
+                modalclasse.classList.remove('invisible');
+                modalclasse.classList.remove('opacity-0');
+                modalclasse.classList.remove('transition-opacity');
+                modalclasse.classList.remove('duration-500');
+                modalclasse.classList.add('visible');
+                modalclasse.classList.add('opacity-100');
+            })
+
+            closeclasse.addEventListener('click', () => {
+                modalclasse.classList.add('invisible');
+                modalclasse.classList.add('opacity-0');
+                modalclasse.classList.add('transition-opacity');
+                modalclasse.classList.add('duration-500');
+                modalclasse.classList.remove('visible');
+                modalclasse.classList.remove('opacity-100');
+            })
         </script>
+
+
+
+
         <script>
-                        $('#groupe').change(function() {
+            $('#groupe').change(function() {
                 var groupeId = $(this).val();
                 var matiereSelect = $('#matiere');
-                
+
                 // Clear existing options
                 matiereSelect.empty();
-                
+
                 // Add a default option
-                matiereSelect.append($('<option>').text('Choisissez une Matiere').attr('disabled', true).attr('selected', true));
-                
+                matiereSelect.append($('<option>').text('Choisissez une Matiere').attr('disabled', true).attr(
+                    'selected', true));
+
                 // Make an AJAX request to fetch the matieres of the selected groupe
                 $.ajax({
                     url: '/matieres-by-groupe/' + groupeId, // Replace with your route URL
@@ -467,13 +597,11 @@
                     success: function(response) {
                         // Add each matiere as an option in the "Matiere" select
                         $.each(response.matieres, function(index, matiere) {
-                            matiereSelect.append($('<option>').text(matiere.nom).attr('value', matiere.id));
+                            matiereSelect.append($('<option>').text(matiere.nom).attr('value',
+                                matiere.id));
                         });
                     }
                 });
             });
-        </script>   
+        </script>
     @endsection
-
-    {{-- // invisible opacity-0 transition-opacity duration-500
-    // visible opacity-100 --}}

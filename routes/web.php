@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\SearchController;
@@ -52,9 +53,9 @@ Route::get('/candidature', function () {
     return view('auth.candidature');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// });
 
 //------------------------gestion des formations ----------------
 
@@ -143,6 +144,9 @@ Route::get('/classes/{classe}/delete', [ClasseController::class, 'destroy']);
 
 
 Route::get('/dashboardE', [FormationController::class, 'index']);
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
