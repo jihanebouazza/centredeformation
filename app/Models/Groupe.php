@@ -29,17 +29,5 @@ class Groupe extends Model
     {
         return $this->hasMany(Inscription::class);
     }
-    protected static function boot()
-    {
-        parent::boot();
-
-        // Define the 'saving' event
-        static::saving(function ($groupe) {
-            $groupe->nombre_etudiant = $groupe->inscriptions()->count();
-            if ($groupe->capacite == $groupe->nombre_etudiant) {
-                $groupe->statut = 'full';
-            }
-
-        });
-    }
+    
 }

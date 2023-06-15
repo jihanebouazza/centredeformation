@@ -23,4 +23,35 @@ class Inscription extends Model
     {
         return $this->belongsTo(User::class,'etudiant_id');
     }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($inscription) {
+            $groupe = $inscription->groupe;
+            $groupe->nombre_etudiant = $groupe->inscriptions()->count();
+            if ($groupe->capacite == $groupe->nombre_etudiant) {
+                $groupe->statut = 'full';
+            }
+            $groupe->save();
+        });
+
+        static::updated(function ($inscription) {
+            $groupe = $inscription->groupe;
+            $groupe->nombre_etudiant = $groupe->inscriptions()->count();
+            if ($groupe->capacite == $groupe->nombre_etudiant) {
+                $groupe->statut = 'full';
+            }
+            $groupe->save();
+        });
+
+        static::deleted(function ($inscription) {
+            $groupe = $inscription->groupe;
+            $groupe->nombre_etudiant = $groupe->inscriptions()->count();
+            if ($groupe->capacite == $groupe->nombre_etudiant) {
+                $groupe->statut = 'full';
+            }
+            $groupe->save();
+        });
+    }
 }
