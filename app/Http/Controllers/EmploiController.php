@@ -17,7 +17,7 @@ class EmploiController extends Controller
     public function manage() {
         $formateurs = User::where('role', 'formateur')->get();
         $formations = Formation::all();
-        $matieres = Matiere::all();
+        $matieres = Matiere::orderBy('formation_id')->get();
         $classes = Classe::all();
         $groupes = Groupe::all();
         $times = Time::all();

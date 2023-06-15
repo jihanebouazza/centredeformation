@@ -11,7 +11,7 @@ class GroupeController extends Controller
 {
     //
     public function manage() {
-        $groupes = Groupe::all();
+        $groupes = Groupe::orderBy('formation_id')->get();
 
         return view('admin.groupes.manage', compact('groupes'));
     }
