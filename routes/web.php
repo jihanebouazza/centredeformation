@@ -137,6 +137,10 @@ Route::post('/seances', [EmploiController::class, 'store'])->middleware(['auth',
 
 Route::get('/seances/{seance}/delete', [EmploiController::class, 'destroy'])->middleware(['auth', 'admin']);
 
+Route::get('/seances/{seance}/edit', [EmploiController::class, 'edit'])->middleware(['auth', 'admin']);
+
+Route::put('/seances/{seance}', [EmploiController::class, 'update'])->middleware(['auth', 'admin']);
+
 Route::post('/matieres', [MatiereController::class, 'store'])->middleware(['auth', 'admin']);
 
 Route::get('/matieres/{matiere}/delete', [MatiereController::class, 'destroy'])->middleware(['auth', 'admin']);
@@ -151,9 +155,7 @@ Route::post('/classes', [ClasseController::class, 'store'])->middleware(['auth',
 
 Route::get('/classes/{classe}/delete', [ClasseController::class, 'destroy'])->middleware(['auth', 'admin']);
 
-Route::get('/emploi/edit', function () {
-    return view('admin.emploidutemps.edit');
-});
+
 
 //-------------------------------------------------- candidature
 

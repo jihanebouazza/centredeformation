@@ -75,5 +75,26 @@ public function destroy(Seance $seance)
         $seance->delete();
         return redirect('/emploi')->with('success', 'Seance supprimé avec succès !');
     }
+public function edit(Seance $seance)
+    {
+        $classes = Classe::all();
+        $groupes = Groupe::all();
+        $formateurs = User::where('role', 'formateur')->get();
+
+        return view('admin.emploidutemps.edit', ['seance' => $seance ,  'formateurs' => $formateurs , 'classes' => $classes , 'groupes' => $groupes]);
+    }
+    public function update(Request $request , Seance $seance)
+    {
+        $formFields = $request->validate([
+            'groupe_id' => 'required',
+            'matiere_id' => 'required',
+            'classe_id' => 'required',
+            'formateur_id' => 'required',
+            'time_id' => 'required',
+            ]);
+            
+            $seance->update($formFields);
+        return redirect('/emploi')->with('success', 'Seance Modifièe avec succès !');
+    }
     
 }
