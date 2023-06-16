@@ -48,10 +48,6 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $matiere->nom }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         <div class="flex items-center">
-                                            <div class="ml-2 mr-4">
-                                                <button id="matiereedit"><i
-                                                        class="fa-regular fa-pen-to-square"></i></button>
-                                            </div>
                                             <div>
                                                 <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
                                                     href="/matieres/{{ $matiere->id }}/delete"><i
@@ -94,9 +90,6 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $classe->nom }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
                                         <div class="flex items-center">
-                                            <div class="ml-2 mr-4">
-                                                <button id="classeedit"><i class="fa-regular fa-pen-to-square"></i></button>
-                                            </div>
                                             <div>
                                                 <a onclick="return confirm('est ce que vous etes sure que vous voulez supprimer?')"
                                                     href="/classes/{{ $classe->id }}/delete"><i
@@ -289,204 +282,11 @@
             </div>
         </div>
 
-        <div style="background-color: rgba(0,0,0, 0.5);"
-            class="fixed top-0 left-0 w-[100%] h-screen flex justify-center items-center invisible opacity-0 transition-opacity duration-500"
-            id="modaledit">
-            <div class="bg-white w-[50%] p-4 rounded-xl" id="modale">
-                <div class="flex justify-end">
-                    <div>
-                        <button id="closedit">
-                            <i class="fa-solid fa-xmark fa-2x pl-2"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <h2 class="mb-4 text-center text-3xl font-extrabold text-black1">
-                        Modifier une seance
-                    </h2>
-                </div>
-                {{-- Modifier une seance --}}
-                <form>
-                    <div class="mt-2">
-                        <label for="jour" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                            Jour
-                        </label>
-                        <select name="jour" id="jour"
-                            class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
-                            <option value="">Choisissez un jour</option>
-                            <option value="">Lundi</option>
-                            <option value="">Mardi</option>
-                            <option value="">Mercredi</option>
-                            <option value="">Jeudi</option>
-                            <option value="">Vendredi</option>
-                            <option value="">Samedi</option>
-                            <option value="">Dimanche</option>
-                        </select>
-                    </div>
-                    <div class="mt-2">
-                        <label class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                            Heure
-                        </label>
-                        <div class="mt-1 flex justify-between items-center">
-                            <div class="w-full">
-                                <input type="text" name="heuredebut"
-                                    class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
-                            </div>
-                            <div class="mx-2 text-md font-bold">à</div>
-                            <div class="w-full">
-                                <input type="text" name="heurefin"
-                                    class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-2 flex justify-between">
-                        <div class="w-full mr-2">
-                            <label for="classe" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                                Classe
-                            </label>
-                            <select name="classe" id="classe"
-                                class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
-                                <option value="">Choisissez une classe</option>
-                                <option value="">Classe 1</option>
-                                <option value="">Classe 2</option>
-                            </select>
-                        </div>
-
-                        <div class="w-full">
-                            <label for="groupe" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                                Groupe
-                            </label>
-                            <select name="groupe" id="groupe"
-                                class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
-                                <option value="">Choisissez un groupe</option>
-                                <option value="">Groupe 1</option>
-                                <option value="">Groupe 2</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <label for="formateur" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                            Formateur
-                        </label>
-                        <select name="formateur" id="formateur"
-                            class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
-                            <option value="">Choisissez un formateur</option>
-                            <option value="">Formateur1</option>
-                            <option value="">Formateur 2</option>
-                        </select>
-                    </div>
-                    <div class="mt-2">
-                        <label for="matiere" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                            Matiere
-                        </label>
-                        <select name="matiere" id="matiere"
-                            class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
-                            <option value="">Choisissez une Matiere</option>
-                            <option value="">Matiere 1</option>
-                            <option value="">Matiere 2</option>
-                        </select>
-                    </div>
-
-
-                    <div class="mt-6 text-center text-md ">
-                        <input type="submit" value="Modifier"
-                            class="rounded-xl cursor-pointer w-full py-3 font-semibold bg-gray1 hover:bg-black2 hover:text-white">
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        {{-- Modifier une matiere --}}
-        <div style="background-color: rgba(0,0,0, 0.5);"
-            class="fixed top-0 left-0 w-[100%] h-screen flex justify-center items-center invisible opacity-0 transition-opacity duration-500"
-            id="modalmatiere">
-            <div class="bg-white w-[50%] p-4 rounded-xl">
-                <div class="flex justify-end">
-                    <div>
-                        <button id="closematiere">
-                            <i class="fa-solid fa-xmark fa-2x pl-2"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <h2 class="mb-4 text-center text-3xl font-extrabold text-black1">
-                        Modifier une matiere
-                    </h2>
-                </div>
-                <form>
-                    <div class="mt-4">
-                        <label for="nom" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                            Nom
-                        </label>
-                        <div class="mt-1">
-                            <input type="text" name="nom"
-                                class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
-                        </div>
-                    </div>
-
-
-                    <div class="mt-6 text-center text-md ">
-                        <input type="submit" value="Modifier"
-                            class="rounded-xl cursor-pointer w-full py-3 font-semibold bg-gray1 hover:bg-black2 hover:text-white">
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        {{-- Modifier une classe --}}
-        <div style="background-color: rgba(0,0,0, 0.5);"
-            class="fixed top-0 left-0 w-[100%] h-screen flex justify-center items-center invisible opacity-0 transition-opacity duration-500"
-            id="modalclasse">
-            <div class="bg-white w-[50%] p-4 rounded-xl">
-                <div class="flex justify-end">
-                    <div>
-                        <button id="closeclasse">
-                            <i class="fa-solid fa-xmark fa-2x pl-2"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <h2 class="mb-4 text-center text-3xl font-extrabold text-black1">
-                        Modifier une classe
-                    </h2>
-                </div>
-
-                <form>
-                    <div class="mt-4">
-                        <label for="nom" class="block ml-1 text-md font-medium text-gray-700 mb-1">
-                            Nom
-                        </label>
-                        <div class="mt-1">
-                            <input type="text" name="nom"
-                                class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
-                        </div>
-                    </div>
-
-
-                    <div class="mt-6 text-center text-md ">
-                        <input type="submit" value="Modifier"
-                            class="rounded-xl cursor-pointer w-full py-3 font-semibold bg-gray1 hover:bg-black2 hover:text-white">
-                    </div>
-                </form>
-            </div>
-        </div>
-
 
         <script>
-            let emploiedit = document.getElementById("emploiedit");
             let emploiadd = document.getElementById('emploiadd');
             let modaladd = document.getElementById("modaladd");
-            let modaledit = document.getElementById("modaledit");
             let closeadd = document.getElementById("closeadd");
-            let closeedit = document.getElementById("closeedit");
-
-            let matiereedit = document.getElementById("matiereedit");
-            let classeedit = document.getElementById("classeedit");
-            let modalclasse = document.getElementById("modalclasse");
-            let modalmatiere = document.getElementById("modalmatiere");
-            let closeclasse = document.getElementById("closeclasse");
-            let closematiere = document.getElementById("closematiere");
-
 
 
             emploiadd.addEventListener('click', () => {
@@ -497,71 +297,16 @@
                 modaladd.classList.add('visible');
                 modaladd.classList.add('opacity-100');
             })
-            emploiedit.addEventListener('click', () => {
-                modaledit.classList.remove('invisible');
-                modaledit.classList.remove('opacity-0');
-                modaledit.classList.remove('transition-opacity');
-                modaledit.classList.remove('duration-500');
-                modaledit.classList.add('visible');
-                modaledit.classList.add('opacity-100');
-            })
 
             closeadd.addEventListener('click', () => {
+                modaladd.classList.remove('visible');
+                modaladd.classList.remove('opacity-100');
                 modaladd.classList.add('invisible');
                 modaladd.classList.add('opacity-0');
                 modaladd.classList.add('transition-opacity');
                 modaladd.classList.add('duration-500');
-                modaladd.classList.remove('visible');
-                modalremove.classList.remove('opacity-100');
-            })
-
-            closedit.addEventListener('click', () => {
-                modaledit.classList.add('invisible');
-                modaledit.classList.add('opacity-0');
-                modaledit.classList.add('transition-opacity');
-                modaledit.classList.add('duration-500');
-                modaledit.classList.remove('visible');
-                modaledit.classList.remove('opacity-100');
-            })
-
-            matiereedit.addEventListener('click', () => {
-                modalmatiere.classList.remove('invisible');
-                modalmatiere.classList.remove('opacity-0');
-                modalmatiere.classList.remove('transition-opacity');
-                modalmatiere.classList.remove('duration-500');
-                modalmatiere.classList.add('visible');
-                modalmatiere.classList.add('opacity-100');
-            })
-
-            closematiere.addEventListener('click', () => {
-                modalmatiere.classList.add('invisible');
-                modalmatiere.classList.add('opacity-0');
-                modalmatiere.classList.add('transition-opacity');
-                modalmatiere.classList.add('duration-500');
-                modalmatiere.classList.remove('visible');
-                modalmatiere.classList.remove('opacity-100');
-            })
-            classeedit.addEventListener('click', () => {
-                modalclasse.classList.remove('invisible');
-                modalclasse.classList.remove('opacity-0');
-                modalclasse.classList.remove('transition-opacity');
-                modalclasse.classList.remove('duration-500');
-                modalclasse.classList.add('visible');
-                modalclasse.classList.add('opacity-100');
-            })
-
-            closeclasse.addEventListener('click', () => {
-                modalclasse.classList.add('invisible');
-                modalclasse.classList.add('opacity-0');
-                modalclasse.classList.add('transition-opacity');
-                modalclasse.classList.add('duration-500');
-                modalclasse.classList.remove('visible');
-                modalclasse.classList.remove('opacity-100');
             })
         </script>
-
-
-
 
         <script>
             $('#groupe').change(function() {

@@ -35,7 +35,8 @@ Route::get('/signup', [UserController::class, 'register'])->middleware('guest');
 
 Route::post('/signup', [UserController::class, 'store'])->middleware('guest');
 
-Route::get('/login', [UserController::class, 'login'])->middleware('guest');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+
 
 Route::post('/auth', [UserController::class, 'auth'])->middleware('guest');
 
@@ -56,9 +57,6 @@ Route::get('/candidature', function () {
     return view('auth.candidature');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('admin.dashboard');
-// });
 
 //------------------------gestion des formations ----------------
 
@@ -133,7 +131,7 @@ Route::put('/formateurs/{formateur}', [FormateurController::class, 'update'])->m
 
 //---------------Emploi------------------------
 
-Route::get('/emploi' , [EmploiController::class, 'manage'])->middleware(['auth', 'admin']);
+Route::get('/emploi', [EmploiController::class, 'manage'])->middleware(['auth', 'admin']);
 
 Route::post('/seances', [EmploiController::class, 'store'])->middleware(['auth', 'admin']);
 
@@ -151,9 +149,13 @@ Route::post('/classes', [ClasseController::class, 'store'])->middleware(['auth',
 
 Route::get('/classes/{classe}/delete', [ClasseController::class, 'destroy'])->middleware(['auth', 'admin']);
 
-//--------------------------------------------------
+Route::get('/emploi/edit', function () {
+    return view('admin.emploidutemps.edit');
+});
 
-Route::get('/candidatures',[CandidatureController::class, 'manage'] )->middleware(['auth', 'admin']);
+//-------------------------------------------------- candidature
+
+Route::get('/candidatures', [CandidatureController::class, 'manage'])->middleware(['auth', 'admin']);
 
 Route::get('/candidatures/{candidature}/show', [CandidatureController::class, 'show'])->middleware(['auth', 'admin']);
 
@@ -172,9 +174,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 
+
 // ------------------------------------------ Paiement
 
-Route::post('/checkout/{id_formation}',[PaiementController::class,'checkout'])->name('checkout');
-Route::get('/success',[PaiementController::class,'success'])->name('checkout.success');
-Route::get('/cancel',[PaiementController::class,'cancel'])->name('checkout.cancel');
-
+Route::post('/checkout/{id_formation}', [PaiementController::class, 'checkout'])->name('checkout');
+Route::get('/success', [PaiementController::class, 'success'])->name('checkout.success');
+Route::get('/cancel', [PaiementController::class, 'cancel'])->name('checkout.cancel');

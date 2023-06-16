@@ -9,7 +9,7 @@
             <div class="flex-col items-center w-[60%] justify-center">
                 <div>
                     <h2 class="my-6 text-center text-3xl font-extrabold text-[#52616B]">
-                        Modifier un canditat
+                        Candidature
                     </h2>
                 </div>
                 <div class="">
