@@ -9,6 +9,7 @@ use App\Http\Controllers\GroupeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\PaiementController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\FormationController;
@@ -74,7 +75,7 @@ Route::put('/formations/{formation}', [FormationController::class, 'update'])->m
 
 Route::get('/formations/{formation}/delete', [FormationController::class, 'destroy'])->middleware(['auth', 'admin']);
 
-Route::get('/formation/{formation}', [FormationController::class, 'show'])->middleware(['auth', 'admin']);
+Route::get('/formation/{formation}', [FormationController::class, 'show']);
 
 //------------------------gestion des etudiants ----------------
 
@@ -171,15 +172,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 
+// ------------------------------------------ Paiement
 
+Route::post('/checkout/{id_formation}',[PaiementController::class,'checkout'])->name('checkout');
+Route::get('/success',[PaiementController::class,'success'])->name('checkout.success');
+Route::get('/cancel',[PaiementController::class,'cancel'])->name('checkout.cancel');
 
-
-
-
-Route::get('/allformations', function () {
-    return view('etudiant.formations');
-});
-
-Route::get('/showformation', function () {
-    return view('etudiant.formation');
-});
