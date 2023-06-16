@@ -135,6 +135,8 @@ Route::get('/emploi', [EmploiController::class, 'manage'])->middleware(['auth', 
 
 Route::post('/seances', [EmploiController::class, 'store'])->middleware(['auth', 'admin']);
 
+Route::get('/seances/{seance}/delete', [EmploiController::class, 'destroy'])->middleware(['auth', 'admin']);
+
 Route::post('/matieres', [MatiereController::class, 'store'])->middleware(['auth', 'admin']);
 
 Route::get('/matieres/{matiere}/delete', [MatiereController::class, 'destroy'])->middleware(['auth', 'admin']);

@@ -69,5 +69,11 @@ class EmploiController extends Controller
     // Return the options and seances as a JSON response
     return response()->json(['options' => $options, 'seances' => $seances]);
 }
+public function destroy(Seance $seance)
+    {
+        
+        $seance->delete();
+        return redirect('/emploi')->with('success', 'Seance supprimé avec succès !');
+    }
     
 }

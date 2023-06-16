@@ -414,17 +414,25 @@
                     var cell = $('td[data-jour="' + jour + '"][data-heure="' + heure + '"]');
 
                     // Insert the seance data into the cell
-                    cell.html(classe.nom + '<br>' + groupe.nom + '<br>' + formateurFullName + '<br>' + matiere.nom);
+                    cell.html('<div class="text-center">' +
+                                '<p class="text-sm">' + groupe.nom + '</p>' +
+                                '<br>' +
+                                '<p class="font-bold">' + matiere.nom  + '</p>' +
+                                '<br>' +
+                                '<p class="text-sm">' + formateurFullName + '</p>' +
+                                '<br>' +
+                                '<p class="text-xs">' + classe.nom + '</p>'
+                                );
 
                     // Add the buttons and their functionality
                     var buttons = $('<div class="flex items-center">' +
                                     '<div class="ml-2 mr-4">' +
-                                        '<button id="emploiedit"><i class="fa-regular fa-pen-to-square"></i></button>' +
+                                        '<a href="/seances/'+seance.id+'/edit" id="emploiedit"><i class="fa-regular fa-pen-to-square"></i></a>' +
                                     '</div>' +
                                     '<div>' +
-                                        '<a onclick="return confirm(\'est ce que vous etes sure que vous voulez supprimer?\')" href=""><i class="fa-solid fa-trash"></i></a>' +
+                                        '<a onclick="return confirm(\'est ce que vous etes sure que vous voulez supprimer?\')" href="/seances/'+seance.id+'/delete"><i class="fa-solid fa-trash"></i></a>' +
                                     '</div>' +
-                                    '</div>');
+                                    '</div>'+ '</div>');
 
                     cell.append(buttons);
             });
