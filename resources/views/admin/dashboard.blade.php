@@ -7,7 +7,7 @@
         </div>
         <div class="flex-1 mx-2 overflow-hidden mt-4">
             <div>
-                <h3 class="font-semibold ml-2 text-[22px] mb-2 ">Bonjour, ahmed</h3>
+                <h3 class="font-semibold ml-2 text-[22px] mb-2 ">Bonjour, {{auth()->user()->first_name}}</h3>
             </div>
             <div class="flex items-center justify-between my-4">
                 <div class="w-1/3 px-4 py-2 rounded-2xl shadow-lg px-2 py-5 mr-4 border-2 border-gray1">

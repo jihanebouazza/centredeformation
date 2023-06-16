@@ -91,7 +91,9 @@ class UserController extends Controller
         }
         if (auth()->attempt([$fieldType => $formFields['login'], 'password' => $formFields['password']])) {
             request()->session()->regenerate();
-
+            if(auth()->user()->role == 'admin'){
+                return redirect('/dashboard')->with('success', 'You are now logged in!');
+            }
             return redirect('/')->with('success', 'You are now logged in!');
         }
 

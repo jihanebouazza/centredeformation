@@ -20,7 +20,7 @@
                                 Prénom
                             </label>
                             <div class="mt-1">
-                                Ahmed
+                                {{$candidature->first_name}}
                             </div>
                         </div>
                         <div class="w-full ml-1">
@@ -28,7 +28,7 @@
                                 Nom
                             </label>
                             <div class="mt-1">
-                                Simo
+                                {{$candidature->last_name}}
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                                 Téléphone
                             </label>
                             <div class="mt-1">
-                                +212 612345678
+                                {{$candidature->telephone}}
                             </div>
                         </div>
                         <div class="w-full ml-1">
@@ -46,7 +46,7 @@
                                 Spécialisation
                             </label>
                             <div class="mt-1">
-                                Français
+                                {{$candidature->specialisation}}
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                             Email
                         </label>
                         <div class="mt-1">
-                            ahmed@gmail.com
+                            {{$candidature->email}}
                         </div>
                     </div>
                     <div class="w-full flex justify-between items-center mt-4">
@@ -64,7 +64,7 @@
                                 Cv
                             </label>
                             <div class="mt-1">
-                                <a class="underline hover:text-black2" href="/cv">Voir cv</a>
+                                <a class="underline hover:text-black2" href="{{ asset('storage/' . $candidature->cv) }}" target="_blank">Voir cv</a>
                             </div>
                         </div>
                         <div class="w-full ml-1">
@@ -72,7 +72,7 @@
                                 Lettre de motivation
                             </label>
                             <div class="mt-1">
-                                <a class="underline hover:text-black2" href="/lettre de motivation">Voir lettre de
+                                <a class="underline hover:text-black2" href="{{ asset('storage/' . $candidature->motivation) }}" target="_blank">Voir lettre de
                                     motivation</a>
                             </div>
                         </div>
@@ -82,7 +82,11 @@
                             Statut
                         </label>
                         <div class="mt-1">
-                            En cours de traitement
+                            @if ($candidature->statut === 'traitement')
+                                                En cours de traitement
+                                            @elseif ($candidature->statut === 'Invite')
+                                                Invite pour entretien
+                                            @endif
                         </div>
                     </div>
 

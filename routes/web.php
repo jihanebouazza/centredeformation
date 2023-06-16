@@ -12,6 +12,7 @@ use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\FormationController;
+use App\Http\Controllers\CandidatureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,110 +61,116 @@ Route::get('/candidature', function () {
 
 //------------------------gestion des formations ----------------
 
-Route::get('/formations', [FormationController::class, 'manage']);
+Route::get('/formations', [FormationController::class, 'manage'])->middleware(['auth', 'admin']);
 
-Route::post('/formations', [FormationController::class, 'store']);
+Route::post('/formations', [FormationController::class, 'store'])->middleware(['auth', 'admin']);
 
-Route::get('/formations/create', [FormationController::class, 'create']);
+Route::get('/formations/create', [FormationController::class, 'create'])->middleware(['auth', 'admin']);
 
-Route::get('/formations/{formation}/edit', [FormationController::class, 'edit']);
+Route::get('/formations/{formation}/edit', [FormationController::class, 'edit'])->middleware(['auth', 'admin']);
 
-Route::put('/formations/{formation}', [FormationController::class, 'update']);
+Route::put('/formations/{formation}', [FormationController::class, 'update'])->middleware(['auth', 'admin']);
 
 
-Route::get('/formations/{formation}/delete', [FormationController::class, 'destroy']);
+Route::get('/formations/{formation}/delete', [FormationController::class, 'destroy'])->middleware(['auth', 'admin']);
 
-Route::get('/formation/{formation}', [FormationController::class, 'show']);
+Route::get('/formation/{formation}', [FormationController::class, 'show'])->middleware(['auth', 'admin']);
 
 //------------------------gestion des etudiants ----------------
 
 
-Route::get('/etudiants', [EtudiantController::class, 'manage']);
+Route::get('/etudiants', [EtudiantController::class, 'manage'])->middleware(['auth', 'admin']);
 
-Route::post('/etudiants', [EtudiantController::class, 'store']);
+Route::post('/etudiants', [EtudiantController::class, 'store'])->middleware(['auth', 'admin']);
 
-Route::get('/etudiants/create', [EtudiantController::class, 'create']);
+Route::get('/etudiants/create', [EtudiantController::class, 'create'])->middleware(['auth', 'admin']);
 
-Route::get('/etudiants/{etudiant}/edit', [EtudiantController::class, 'edit']);
+Route::get('/etudiants/{etudiant}/edit', [EtudiantController::class, 'edit'])->middleware(['auth', 'admin']);
 
 
-Route::put('/etudiants/{etudiant}', [EtudiantController::class, 'update']);
+Route::put('/etudiants/{etudiant}', [EtudiantController::class, 'update'])->middleware(['auth', 'admin']);
 
-Route::get('/etudiants/{etudiant}/delete', [EtudiantController::class, 'destroy']);
+Route::get('/etudiants/{etudiant}/delete', [EtudiantController::class, 'destroy'])->middleware(['auth', 'admin']);
 
-Route::get('/etudiants/{etudiant}/inscrire', [EtudiantController::class, 'inscrireForm']);
+Route::get('/etudiants/{etudiant}/inscrire', [EtudiantController::class, 'inscrireForm'])->middleware(['auth', 'admin']);
 
-Route::post('/etudiants/inscrire/{etudiant}', [EtudiantController::class, 'inscrire']);
+Route::post('/etudiants/inscrire/{etudiant}', [EtudiantController::class, 'inscrire'])->middleware(['auth', 'admin']);
 
-Route::get('/groupes-by-formation/{formationId}', [EtudiantController::class, 'getGroups']);
+Route::get('/groupes-by-formation/{formationId}', [EtudiantController::class, 'getGroups'])->middleware(['auth', 'admin']);
 
 
 //------------------------gestion des groupes ----------------
 
 
-Route::get('/groupes', [GroupeController::class, 'manage']);
+Route::get('/groupes', [GroupeController::class, 'manage'])->middleware(['auth', 'admin']);
 
-Route::get('/groupes/{groupe}/delete', [GroupeController::class, 'destroy']);
+Route::get('/groupes/{groupe}/delete', [GroupeController::class, 'destroy'])->middleware(['auth', 'admin']);
 
-Route::post('/groupes', [GroupeController::class, 'store']);
+Route::post('/groupes', [GroupeController::class, 'store'])->middleware(['auth', 'admin']);
 
-Route::get('/groupes/create', [GroupeController::class, 'create']);
+Route::get('/groupes/create', [GroupeController::class, 'create'])->middleware(['auth', 'admin']);
 
-Route::get('/groupes/{groupe}/edit', [GroupeController::class, 'edit']);
+Route::get('/groupes/{groupe}/edit', [GroupeController::class, 'edit'])->middleware(['auth', 'admin']);
 
-Route::put('/groupes/{groupe}', [GroupeController::class, 'update']);
+Route::put('/groupes/{groupe}', [GroupeController::class, 'update'])->middleware(['auth', 'admin']);
 
 //------------------------gestion des formateurs ----------------
 
 
-Route::get('/formateurs', [FormateurController::class, 'manage']);
+Route::get('/formateurs', [FormateurController::class, 'manage'])->middleware(['auth', 'admin']);
 
-Route::get('/formateurs/{formateur}/delete', [FormateurController::class, 'destroy']);
+Route::get('/formateurs/{formateur}/delete', [FormateurController::class, 'destroy'])->middleware(['auth', 'admin']);
 
-Route::post('/formateurs', [FormateurController::class, 'store']);
+Route::post('/formateurs', [FormateurController::class, 'store'])->middleware(['auth', 'admin']);
 
-Route::get('/formateurs/create', [FormateurController::class, 'create']);
+Route::get('/formateurs/create', [FormateurController::class, 'create'])->middleware(['auth', 'admin']);
 
-Route::get('/formateurs/{formateur}/edit', [FormateurController::class, 'edit']);
+Route::get('/formateurs/{formateur}/edit', [FormateurController::class, 'edit'])->middleware(['auth', 'admin']);
 
-Route::put('/formateurs/{formateur}', [FormateurController::class, 'update']);
+Route::put('/formateurs/{formateur}', [FormateurController::class, 'update'])->middleware(['auth', 'admin']);
 
 
 //---------------Emploi------------------------
 
-Route::get('/emploi' , [EmploiController::class, 'manage']);
+Route::get('/emploi' , [EmploiController::class, 'manage'])->middleware(['auth', 'admin']);
 
-Route::post('/seances', [EmploiController::class, 'store']);
+Route::post('/seances', [EmploiController::class, 'store'])->middleware(['auth', 'admin']);
 
-Route::post('/matieres', [MatiereController::class, 'store']);
+Route::post('/matieres', [MatiereController::class, 'store'])->middleware(['auth', 'admin']);
 
-Route::get('/matieres/{matiere}/delete', [MatiereController::class, 'destroy']);
+Route::get('/matieres/{matiere}/delete', [MatiereController::class, 'destroy'])->middleware(['auth', 'admin']);
 
-Route::get('/matieres-by-groupe/{groupeId}', [MatiereController::class, 'getMatieres']);
+Route::get('/matieres-by-groupe/{groupeId}', [MatiereController::class, 'getMatieres'])->middleware(['auth', 'admin']);
 
-Route::get('/get-available-time-slots', [TimeController::class, 'getAvailableTimeSlots']);
+Route::get('/get-available-time-slots', [TimeController::class, 'getAvailableTimeSlots'])->middleware(['auth', 'admin']);
 
-Route::get('/get-options/{type}', [EmploiController::class, 'getOptions']);
+Route::get('/get-options/{type}', [EmploiController::class, 'getOptions'])->middleware(['auth', 'admin']);
 
-Route::post('/classes', [ClasseController::class, 'store']);
+Route::post('/classes', [ClasseController::class, 'store'])->middleware(['auth', 'admin']);
 
-Route::get('/classes/{classe}/delete', [ClasseController::class, 'destroy']);
+Route::get('/classes/{classe}/delete', [ClasseController::class, 'destroy'])->middleware(['auth', 'admin']);
+
+//--------------------------------------------------
+
+Route::get('/candidatures',[CandidatureController::class, 'manage'] )->middleware(['auth', 'admin']);
+
+Route::get('/candidatures/{candidature}/show', [CandidatureController::class, 'show'])->middleware(['auth', 'admin']);
+
+Route::get('/candidatures/{candidature}/accept', [CandidatureController::class, 'accept'])->middleware(['auth', 'admin']);
+
+Route::get('/candidatures/{candidature}/refuse', [CandidatureController::class, 'destroy'])->middleware(['auth', 'admin']);
 
 
+
+//--------------------------------------------------
 Route::get('/dashboardE', [FormationController::class, 'index']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'admin']);
 
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
-Route::get('/candidatures', function () {
-    return view('admin.candidatures.manage');
-});
 
-Route::get('/candidatures/show', function () {
-    return view('admin.candidatures.show');
-});
 
 
 
