@@ -14,6 +14,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\CandidatureController;
+use App\Http\Controllers\CertificatController;
+use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\OpinionController;
 
 /*
@@ -200,7 +202,12 @@ Route::get('/opinions/{opinion}/delete', [OpinionController::class, 'destroy']);
 Route::post('/checkout/{id_formation}', [PaiementController::class, 'checkout'])->name('checkout');
 Route::get('/success', [PaiementController::class, 'success'])->name('checkout.success');
 Route::get('/cancel', [PaiementController::class, 'cancel'])->name('checkout.cancel');
+// ------------------ history
+Route::get('/history', [InscriptionController::class, 'index']);
 
+//------------------------------certificat
+
+Route::get('/certificates/{id}', [CertificatController::class, 'generateCertificate'])->name('generate.certificate');
 
 //----------------------------------------------Formateur
 Route::get('/dashboardF', function () {
