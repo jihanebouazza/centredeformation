@@ -14,6 +14,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormateurController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\CandidatureController;
+use App\Http\Controllers\OpinionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -168,14 +169,29 @@ Route::get('/candidatures/{candidature}/accept', [CandidatureController::class, 
 Route::get('/candidatures/{candidature}/refuse', [CandidatureController::class, 'destroy'])->middleware(['auth', 'admin']);
 
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'admin']);
 
-//--------------------------------------------------
+//--------------------------------------------------Etudiant
 Route::get('/dashboardE', [FormationController::class, 'index']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'admin']);
+
 
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+// opinions
+Route::get('/opinions', [OpinionController::class, 'index']);
+
+Route::post('/opinions', [OpinionController::class, 'store']);
+
+Route::get('/opinions/create', [OpinionController::class, 'create']);
+
+Route::get('/opinions/{opinion}/edit', [OpinionController::class, 'edit']);
+
+Route::put('/opinions/{opinion}', [OpinionController::class, 'update']);
+
+Route::get('/opinions/{opinion}/delete', [OpinionController::class, 'destroy']);
+
 
 
 
@@ -190,3 +206,4 @@ Route::get('/cancel', [PaiementController::class, 'cancel'])->name('checkout.can
 Route::get('/dashboardF', function () {
     return view('formateur.dashboard');
 });
+
