@@ -78,11 +78,11 @@ class UserController extends Controller
             'login' => 'required',
             'password' => 'required'
         ]);
-        
+
         $user = User::where(function ($query) use ($formFields) {
             $query->where('email', $formFields['login']);
         })->first();
-        
+
         // dd($user);
         if (!$user) {
             return back()->withErrors(['login' => 'Invalid credentials'])->onlyInput('login');
@@ -156,5 +156,30 @@ class UserController extends Controller
         $user->password = $formFields['password'];
         $user->save();
         return redirect('/login')->with('message', 'Your password has been changed');
+    }
+
+
+    public function edit()
+{
+    $user = auth()->user();
+    return view('etudiant.profile', compact('user'));
+}
+
+
+    public function update(Request $request)
+    {
+        $formFields = $request->validate([
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'telephone' => ['required', 'regex:/^06\d{8}$/'],
+        ]);
+
+        if ($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('etudiants', 'public');
+        }
+        $user = auth()->user();
+        $user->update($formFields);
+
+        return redirect('/profileE')->with('success', 'Profile mise à jour avec succès !');
     }
 }

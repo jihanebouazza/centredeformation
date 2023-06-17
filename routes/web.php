@@ -209,6 +209,11 @@ Route::get('/history', [InscriptionController::class, 'index']);
 
 Route::get('/certificates/{id}', [CertificatController::class, 'generateCertificate'])->name('generate.certificate');
 
+//---------------------profile
+
+Route::get('/profileE', [UserController::class, 'edit']);
+Route::put('/update_profile', [UserController::class, 'update']);
+
 //----------------------------------------------Formateur
 Route::get('/dashboardF', function () {
     return view('formateur.dashboard');
