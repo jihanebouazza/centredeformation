@@ -184,3 +184,9 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::post('/checkout/{id_formation}', [PaiementController::class, 'checkout'])->name('checkout');
 Route::get('/success', [PaiementController::class, 'success'])->name('checkout.success');
 Route::get('/cancel', [PaiementController::class, 'cancel'])->name('checkout.cancel');
+
+
+//----------------------------------------------Formateur
+Route::get('/dashboardF', function () {
+    return view('formateur.dashboard');
+});

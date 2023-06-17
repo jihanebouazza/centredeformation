@@ -57,6 +57,11 @@ class User extends Authenticatable
             ->pluck('groupe');
     }
 
+    public function hasRole(string $roleName): bool
+    {
+        return $this->role === $roleName;
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

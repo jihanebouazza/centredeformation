@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use session;
 use App\Models\User;
 use App\Mail\ResetMail;
 use Illuminate\Http\Request;
 use App\Mail\VerificationMail;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -75,29 +78,29 @@ class UserController extends Controller
             'login' => 'required',
             'password' => 'required'
         ]);
-        $fieldType = filter_var($formFields['login'], FILTER_VALIDATE_EMAIL) ? 'email' : 'telephone';
-
+        
         $user = User::where(function ($query) use ($formFields) {
-            $query->where('email', $formFields['login'])
-                ->orWhere('telephone', $formFields['login']);
+            $query->where('email', $formFields['login']);
         })->first();
-
+        
+        // dd($user);
         if (!$user) {
-            return back()->withErrors(['login' => 'Invalid Credentials'])->onlyInput('login');
+            return back()->withErrors(['login' => 'Invalid credentials'])->onlyInput('login');
         }
 
         if ($user->code !== null) {
             return back()->with('message', 'Your account is not verified. Please verify your email.');
         }
-        if (auth()->attempt([$fieldType => $formFields['login'], 'password' => $formFields['password']])) {
+
+        if (Auth::attempt(['email' => $formFields['login'], 'password' => $formFields['password']])) {
             request()->session()->regenerate();
-            if(auth()->user()->role == 'admin'){
+            if (auth()->user()->role == 'admin') {
                 return redirect('/dashboard')->with('success', 'You are now logged in!');
             }
             return redirect('/')->with('success', 'You are now logged in!');
         }
 
-        return back()->withErrors(['login' => 'Invalid Credentials'])->onlyInput('login');
+        return back()->withErrors(['login' => 'Invalid credentials'])->onlyInput('login');
     }
 
     public function verify(Request $request)

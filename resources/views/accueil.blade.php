@@ -9,8 +9,24 @@
             <div class="text-md font-semibold mr-2"><a href="/">Accueil</a></div>
             <div class="text-md font-semibold"><a href="/candidature">Devenir un formateur</a></div>
             <div>
-                <a href="/login" class="mr-4"><i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>Se connecter</a>
-                <a href="/signup"><i class="fa-solid fa-user-plus mr-2"></i>S'inscrire</a>
+                @guest
+                    <a href="/login" class="mr-4"><i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>Se connecter</a>
+                    <a href="/signup"><i class="fa-solid fa-user-plus mr-2"></i>S'inscrire</a>
+                @endguest
+                @auth
+                    @if (Auth::user()->hasRole('etudiant'))
+                        <a class="mr-2 font-semibold" href="/dashboardE"><i class="fa-solid fa-table-columns mr-2"></i>Dashboard</a>
+                        <a href="/logout"><i class="fa-solid fa-right-from-bracket mr-2"></i>Se
+                            deconnecter</a>
+                    @elseif (Auth::user()->hasRole('admin'))
+                        <a class="mr-2 font-semibold" href="/dashboard"><i class="fa-solid fa-table-columns mr-2"></i>Dashboard</a>
+                        <a href="/logout"><i class="fa-solid fa-right-from-bracket mr-2"></i>Se
+                            deconnecter</a>
+                    @elseif (Auth::user()->hasRole('formateur'))
+                        <a class="mr-2 font-semibold" href="/dashboardF"><i class="fa-solid fa-table-columns mr-2"></i>Dashboard</a>
+                        <a href="/logout"><i class="fa-solid fa-right-from-bracket mr-2"></i>Se deconnecter</a>
+                    @endif
+                @endauth
             </div>
         </div>
     </div>
@@ -148,7 +164,7 @@
             var header = document.getElementById('header');
             var logo = document.getElementById('logo');
             var words = document.getElementById('words');
-            if (window.scrollY > 0 && window.scrollY <500) {
+            if (window.scrollY > 0 && window.scrollY < 500) {
                 header.classList.remove('bg-black1');
                 header.classList.add('bg-white');
                 logo.classList.remove('text-white');
