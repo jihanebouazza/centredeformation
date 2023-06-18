@@ -19,7 +19,7 @@ class EmploiController extends Controller
         $formations = Formation::all();
         $matieres = Matiere::orderBy('formation_id')->get();
         $classes = Classe::all();
-        $groupes = Groupe::all();
+        $groupes = Groupe::where('statut', '!=', 'finished')->get();
         $times = Time::all();
 
 
@@ -45,7 +45,7 @@ class EmploiController extends Controller
     if ($type === 'classe') {
         $options = Classe::all();
     } elseif ($type === 'groupe') {
-        $options = Groupe::all();
+        $options = Groupe::where('statut', '!=', 'finished')->get();
     } elseif ($type === 'formateur') {
         $options = User::where('role', 'formateur')->get();
     } else {
@@ -78,10 +78,21 @@ public function destroy(Seance $seance)
 public function edit(Seance $seance)
     {
         $classes = Classe::all();
-        $groupes = Groupe::all();
+        $groupes = Groupe::where('statut', '!=', 'finished')->get();
         $formateurs = User::where('role', 'formateur')->get();
+        $groupeId = $seance->groupe_id;
+        $formateurId = $seance->formateur_id;
+        $classeId = $seance->classe_id;
 
-        return view('admin.emploidutemps.edit', ['seance' => $seance ,  'formateurs' => $formateurs , 'classes' => $classes , 'groupes' => $groupes]);
+        $times = Time::whereDoesntHave('seances', function ($query) use ($groupeId, $formateurId, $classeId) {
+            $query->where('groupe_id', $groupeId)
+                ->where('formateur_id', $formateurId)
+                ->where('classe_id', $classeId);
+        })->get();    
+        $anotherTime = $seance->time ;
+        $times[] = $anotherTime;
+
+        return view('admin.emploidutemps.edit', ['seance' => $seance ,  'formateurs' => $formateurs , 'classes' => $classes , 'groupes' => $groupes , 'times' => $times ]);
     }
     public function update(Request $request , Seance $seance)
     {

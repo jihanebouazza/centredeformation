@@ -42,8 +42,8 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{$etudiant->email}}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{$etudiant->telephone}}</td>
                                     @php
-                                        $nom = $etudiant->hasGroup() ? optional($etudiant->getGroup()->first())->nom : null ;
-                                        $titre = $etudiant->hasGroup() ? optional($etudiant->getGroup()->first())->formation->titre : null ;
+                                        $nom = $etudiant->hasGroup() ? optional($etudiant->getGroup())->groupe->nom : null ;
+                                        $titre = $etudiant->hasGroup() ? optional($etudiant->getGroup())->groupe->formation->titre : null ;
                                     @endphp
                                     <td class="whitespace-nowrap px-6 py-4">@if ($nom) {{$nom}} @endif</td>
                                     <td class="whitespace-nowrap px-6 py-4">@if ($titre) {{$titre}} @endif</td></td>
