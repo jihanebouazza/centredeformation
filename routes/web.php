@@ -56,9 +56,10 @@ Route::get('/reset', [UserController::class, 'resetform'])->middleware('guest');
 Route::post('/users/reset', [UserController::class, 'reset'])->middleware('guest');
 
 
-Route::get('/candidature', function () {
-    return view('auth.candidature');
-});
+Route::get('/candidature', [CandidatureController::class, 'single']);
+
+Route::post('/candidature/store', [CandidatureController::class, 'store'])->name('candidatures.store');
+
 
 
 //------------------------gestion des formations ----------------
@@ -174,7 +175,7 @@ Route::get('/candidatures/{candidature}/refuse', [CandidatureController::class, 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'admin']);
 
 //--------------------------------------------------Etudiant
-Route::get('/dashboardE', [FormationController::class, 'index']);
+Route::get('/dashboardE', [FormationController::class, 'index'])->middleware(['auth', 'etudiant']);
 
 
 
@@ -182,43 +183,43 @@ Route::get('/dashboardE', [FormationController::class, 'index']);
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 // opinions
-Route::get('/opinions', [OpinionController::class, 'index']);
+Route::get('/opinions', [OpinionController::class, 'index'])->middleware(['auth', 'etudiant']);
 
-Route::post('/opinions', [OpinionController::class, 'store']);
+Route::post('/opinions', [OpinionController::class, 'store'])->middleware(['auth', 'etudiant']);
 
-Route::get('/opinions/create', [OpinionController::class, 'create']);
+Route::get('/opinions/create', [OpinionController::class, 'create'])->middleware(['auth', 'etudiant']);
 
-Route::get('/opinions/{opinion}/edit', [OpinionController::class, 'edit']);
+Route::get('/opinions/{opinion}/edit', [OpinionController::class, 'edit'])->middleware(['auth', 'etudiant']);
 
-Route::put('/opinions/{opinion}', [OpinionController::class, 'update']);
+Route::put('/opinions/{opinion}', [OpinionController::class, 'update'])->middleware(['auth', 'etudiant']);
 
-Route::get('/opinions/{opinion}/delete', [OpinionController::class, 'destroy']);
+Route::get('/opinions/{opinion}/delete', [OpinionController::class, 'destroy'])->middleware(['auth', 'etudiant']);
 
 
 
 
 // ------------------------------------------ Paiement
 
-Route::post('/checkout/{id_formation}', [PaiementController::class, 'checkout'])->name('checkout');
-Route::get('/success', [PaiementController::class, 'success'])->name('checkout.success');
-Route::get('/cancel', [PaiementController::class, 'cancel'])->name('checkout.cancel');
+Route::post('/checkout/{id_formation}', [PaiementController::class, 'checkout'])->middleware(['auth', 'etudiant'])->name('checkout');
+Route::get('/success', [PaiementController::class, 'success'])->middleware(['auth', 'etudiant'])->name('checkout.success');
+Route::get('/cancel', [PaiementController::class, 'cancel'])->middleware(['auth', 'etudiant'])->name('checkout.cancel');
 // ------------------ history
-Route::get('/history', [InscriptionController::class, 'index']);
+Route::get('/history', [InscriptionController::class, 'index'])->middleware(['auth', 'etudiant']);
 
 //------------------------------certificat
 
-Route::get('/certificates/{id}', [CertificatController::class, 'generateCertificate'])->name('generate.certificate');
+Route::get('/certificates/{id}', [CertificatController::class, 'generateCertificate'])->middleware(['auth', 'etudiant'])->name('generate.certificate');
 
 //---------------------profile
 
-Route::get('/profileE', [UserController::class, 'edit']);
-Route::put('/update_profile', [UserController::class, 'update']);
+Route::get('/profileE', [UserController::class, 'edit'])->middleware(['auth', 'etudiant']);
+Route::put('/update_profile', [UserController::class, 'update'])->middleware(['auth', 'etudiant']);
 
 //----------------------------------------------Formateur
 Route::get('/dashboardF', [FormateurController::class, 'emploi'] );
-Route::get('/emploiE', [EtudiantController::class, 'emploi']);
-Route::get('/passwordE', [UserController::class, 'passwordformE']);
+Route::get('/emploiE', [EtudiantController::class, 'emploi'])->middleware(['auth', 'etudiant']);
+Route::get('/passwordE', [UserController::class, 'passwordformE'])->middleware(['auth', 'etudiant']);
 
 Route::put('/password', [UserController::class, 'changePassword']);
 
-Route::get('/passwordF', [UserController::class, 'passwordformF'] );
+Route::get('/passwordF', [UserController::class, 'passwordformF'] )->middleware(['auth', 'formateur']);

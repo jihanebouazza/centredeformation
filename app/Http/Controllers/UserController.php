@@ -208,6 +208,6 @@ class UserController extends Controller
         $user->password = bcrypt($formFields['password']);
         $user->save();
 
-        return redirect()->back()->with('message', 'Password changed successfully.');
+        return redirect()->back()->with('success', 'Mot de passe changé avec succès.');
     }
 }

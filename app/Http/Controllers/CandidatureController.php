@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InviteEmail;
 use App\Models\Candidature;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -29,7 +30,7 @@ class CandidatureController extends Controller
     }
     public function accept(Request $request, Candidature $candidature)
     {
-        
+
         $formFields['statut'] = "Invite";
         $candidature->update($formFields);
         Mail::to($candidature->email)->send(new InviteEmail($candidature->first_name, $candidature->last_name));
@@ -40,5 +41,39 @@ class CandidatureController extends Controller
     public function show(Candidature $candidature)
     {
         return view('admin.candidatures.show', ['candidature' => $candidature]);
+    }
+    public function store(Request $request)
+    {
+        // Validate the input
+        $validatedData = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'telephone' => 'required',
+            'email' => 'required|email',
+            'specialisation' => 'required',
+            'cv' => 'required|file',
+            'motivation' => 'required|file',
+        ]);
+
+        // Store the uploaded files
+        $cvPath = $request->file('cv')->store('cv', 'public');
+        $motivationPath = $request->file('motivation')->store('lettredemotivation', 'public');
+
+        // Create a new Candidature instance
+        $candidature = new Candidature();
+        $candidature->first_name = $validatedData['first_name'];
+        $candidature->last_name = $validatedData['last_name'];
+        $candidature->telephone = $validatedData['telephone'];
+        $candidature->email = $validatedData['email'];
+        $candidature->specialisation = $validatedData['specialisation'];
+        $candidature->cv = $cvPath;
+        $candidature->motivation = $motivationPath;
+        $candidature->save();
+
+        return redirect('/candidature')->with('success', 'Candidature soumise avec succès !');
+    }
+    public function single()
+    {
+        return view('auth.candidature');
     }
 }

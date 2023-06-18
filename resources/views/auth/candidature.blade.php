@@ -16,33 +16,34 @@
                 </h2>
             </div>
             <div>
-                <form>
+                <form action="{{ route('candidatures.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="w-full flex justify-between items-center">
                         <div class="mr-2 w-full">
-                            <label for="firstname" class="block ml-1 text-md font-medium text-gray-700 mb-1">
+                            <label for="first_name" class="block ml-1 text-md font-medium text-gray-700 mb-1">
                                 Prénom
                             </label>
                             <div class="mt-1">
-                                <input type="text" name="firstname"
+                                <input type="text" name="first_name"
                                     class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                             </div>
                         </div>
                         <div class="w-full">
-                            <label for="lastname" class="block ml-1 text-md font-medium text-gray-700 mb-1">
+                            <label for="last_name" class="block ml-1 text-md font-medium text-gray-700 mb-1">
                                 Nom
                             </label>
                             <div class="mt-1">
-                                <input type="text" name="lastname"
+                                <input type="text" name="last_name"
                                     class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                             </div>
                         </div>
                     </div>
                     <div class="mt-2">
-                        <label for="tel" class="block ml-1 text-md font-medium text-gray-700 mb-1">
+                        <label for="telephone" class="block ml-1 text-md font-medium text-gray-700 mb-1">
                             Numéro de téléphone
                         </label>
                         <div class="mt-1">
-                            <input type="text" name="tel"
+                            <input type="text" name="telephone"
                                 class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                         </div>
                     </div>
@@ -55,7 +56,7 @@
                                 class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm" />
                         </div>
                     </div>
-                    <div class="w-full">
+                    <div class="w-full mt-2">
                         <label for="specialisation" class="block ml-1 text-md font-medium text-gray-700 mb-1">
                             Spécialisation
                         </label>
@@ -83,7 +84,7 @@
                             <div class="mt-1">
                                 <input
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none"
-                                    id="file_input" type="file" name="lettredemotivation">
+                                    id="file_input" type="file" name="motivation">
                             </div>
                         </div>
                     </div>
