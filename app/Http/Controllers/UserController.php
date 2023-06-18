@@ -36,7 +36,7 @@ class UserController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
-        return redirect('/login')->with('success', 'You have been logged out!');
+        return redirect('/login')->with('success', 'Vous avez été déconnecté !');
     }
 
     public function resetform(Request $request)
@@ -69,7 +69,7 @@ class UserController extends Controller
 
         Mail::to($user->email)->send(new VerificationMail($user->id, $user->code));
 
-        return redirect('/login')->with('message', 'We have sent a verification email');
+        return redirect('/login')->with('message', 'Nous avons envoyé un e-mail de vérification.');
     }
 
     public function auth()
@@ -83,21 +83,21 @@ class UserController extends Controller
             $query->where('email', $formFields['login']);
         })->first();
 
-        // dd($user);
+        
         if (!$user) {
             return back()->withErrors(['login' => 'Invalid credentials'])->onlyInput('login');
         }
 
         if ($user->code !== null) {
-            return back()->with('message', 'Your account is not verified. Please verify your email.');
+            return back()->with('message', 'Votre compte n\'est pas vérifié. Veuillez vérifier votre adresse e-mail.');
         }
 
         if (Auth::attempt(['email' => $formFields['login'], 'password' => $formFields['password']])) {
             request()->session()->regenerate();
             if (auth()->user()->role == 'admin') {
-                return redirect('/dashboard')->with('success', 'You are now logged in!');
+                return redirect('/dashboard')->with('success', 'Vous êtes maintenant connecté !');
             }
-            return redirect('/')->with('success', 'You are now logged in!');
+            return redirect('/')->with('success', 'Vous êtes maintenant connecté !');
         }
 
         return back()->withErrors(['login' => 'Invalid credentials'])->onlyInput('login');
@@ -119,10 +119,10 @@ class UserController extends Controller
             $user->save();
 
             // Redirect the user to the login page with a success message
-            return redirect('/login')->with('message', 'Your email has been verified. Please login to continue.');
+            return redirect('/login')->with('message', 'Votre adresse e-mail a été vérifiée. Veuillez vous connecter pour continuer.');
         } else {
             // Redirect the user to the login page with an error message
-            return redirect('/login')->with('error', 'Invalid verification link.');
+            return redirect('/login')->with('error', 'Lien de vérification invalide.');
         }
     }
     public function forget()
@@ -132,14 +132,14 @@ class UserController extends Controller
         ]);
         $user = User::where('email', $formFields['email'])->first();
         if (!$user) {
-            return back()->withErrors(['email' => 'We could not find an account with that email address.']);
+            return back()->withErrors(['email' => 'Nous n\'avons pas pu trouver de compte associé à cette adresse e-mail.']);
         }
         $formFields['code_reset'] = bcrypt(rand());
         $user->code_reset = $formFields['code_reset'];
         $user->save();
         Mail::to($user->email)->send(new ResetMail($user->id, $user->code_reset));
 
-        return redirect('/login')->with('message', 'We have sent a reset email');
+        return redirect('/login')->with('message', 'Nous avons envoyé un e-mail de réinitialisation.');
     }
     public function reset()
     {
@@ -155,7 +155,7 @@ class UserController extends Controller
         $user->code_reset = null;
         $user->password = $formFields['password'];
         $user->save();
-        return redirect('/login')->with('message', 'Your password has been changed');
+        return redirect('/login')->with('message', 'Votre mot de passe a été changé.');
     }
 
 

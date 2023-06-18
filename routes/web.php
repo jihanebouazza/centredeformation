@@ -218,4 +218,13 @@ Route::put('/update_profile', [UserController::class, 'update']);
 Route::get('/dashboardF', function () {
     return view('formateur.dashboard');
 });
+Route::get('/emploiE', function () {
+    return view('etudiant.emploi');
+});
+Route::get('/passwordE', function () {
+    return view('etudiant.password');
+});
 
+Route::get('/passwordF', function () {
+    return view('formateur.password');
+});
