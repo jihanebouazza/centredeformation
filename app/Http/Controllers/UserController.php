@@ -7,10 +7,11 @@ use App\Models\User;
 use App\Mail\ResetMail;
 use Illuminate\Http\Request;
 use App\Mail\VerificationMail;
+use App\Rules\MatchOldPassword;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -181,5 +182,32 @@ class UserController extends Controller
         $user->update($formFields);
 
         return redirect('/profileE')->with('success', 'Profile mise à jour avec succès !');
+    }
+    public function passwordformE()
+    {
+        $user = auth()->user();
+        return view('etudiant.password', ['user' => $user]);
+    }
+
+    public function passwordformF()
+    {
+        $user = auth()->user();
+        return view('formateur.password', ['user' => $user]);
+    }
+
+    public function changePassword()
+    {
+
+        $user = Auth::user();
+
+        $formFields = request()->validate([
+            'old_password' => ['required', new MatchOldPassword],
+            'password' => ['required', 'min:6', 'confirmed'],
+        ]);
+
+        $user->password = bcrypt($formFields['password']);
+        $user->save();
+
+        return redirect()->back()->with('message', 'Password changed successfully.');
     }
 }

@@ -13,8 +13,9 @@
                     </h2>
                 </div>
                 <div class="">
-                    <form method="POST">
+                    <form method="POST" action="/password">
                         @csrf
+                        @method('PUT')
                         <div class="mr-2 w-full">
                             <label for="old_password" class="block ml-1 text-md font-medium text-gray-700 mb-1">
                                 Mot de passe ancien

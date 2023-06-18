@@ -96,4 +96,6 @@ class EtudiantController extends Controller
         return redirect('/etudiants')->with('success', 'Etudiant Inscrit avec succès !');
     }
 
+    
+
 }

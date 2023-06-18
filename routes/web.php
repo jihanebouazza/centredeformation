@@ -221,10 +221,8 @@ Route::get('/dashboardF', function () {
 Route::get('/emploiE', function () {
     return view('etudiant.emploi');
 });
-Route::get('/passwordE', function () {
-    return view('etudiant.password');
-});
+Route::get('/passwordE', [UserController::class, 'passwordformE']);
 
-Route::get('/passwordF', function () {
-    return view('formateur.password');
-});
+Route::put('/password', [UserController::class, 'changePassword']);
+
+Route::get('/passwordF', [UserController::class, 'passwordformF'] );
