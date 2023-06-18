@@ -53,8 +53,7 @@ class User extends Authenticatable
                 $query->whereIn('statut', ['started', 'full', 'open']);
             })
             ->with('groupe')
-            ->get()
-            ->pluck('groupe');
+            ->first();
     }
 
     public function hasRole(string $roleName): bool

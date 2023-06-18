@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Seance;
 use App\Models\Formation;
 use App\Models\Inscription;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -96,6 +98,28 @@ class EtudiantController extends Controller
         return redirect('/etudiants')->with('success', 'Etudiant Inscrit avec succès !');
     }
 
-    
+    public function emploi(){
+        if(auth()->user()->hasGroup()){
+            $groupeId = DB::table('inscriptions')
+            ->join('groupes', 'inscriptions.groupe_id', '=', 'groupes.id')
+            ->where('inscriptions.etudiant_id', auth()->user()->id)
+            ->where(function ($query) {
+                $query->where('groupes.statut', 'open')
+                    ->orWhere('groupes.statut', 'full')
+                    ->orWhere('groupes.statut', 'started');
+            })
+            ->value('inscriptions.groupe_id');
+
+            $seances = Seance::where('groupe_id', $groupeId )->get();
+
+            return view('etudiant.emploi', ['seances' => $seances ]);
+        }else{
+           $seances = null ;
+           return view('etudiant.emploi', ['seances' => $seances ]);
+           
+        }
+
+        
+    }
 
 }
