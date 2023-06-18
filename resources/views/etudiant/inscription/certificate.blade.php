@@ -118,8 +118,8 @@
             <p>pour avoir terminé avec succès sa formation en :</p>
             <p><strong>{{ $formation->titre }}</strong></p>
             <p>Durée de la formation : {{ $formation->duree }} mois</p>
-            <p>Groupe : <span class="highlight">{{ $groupe->nom }}</span></p>
-            <div class="description">
+            <p>Date de prise de formation : {{ $groupe->date_fin }}</p>
+                        <div class="description">
                 <p>{{ $user->first_name }} {{ $user->last_name }} a démontré un niveau élevé de compétence et de maîtrise dans les domaines couverts par la
                     formation. Son engagement, son travail acharné et son dévouement lui ont permis d'atteindre des
                     résultats remarquables.</p>
