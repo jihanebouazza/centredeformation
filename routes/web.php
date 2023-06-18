@@ -215,9 +215,7 @@ Route::get('/profileE', [UserController::class, 'edit']);
 Route::put('/update_profile', [UserController::class, 'update']);
 
 //----------------------------------------------Formateur
-Route::get('/dashboardF', function () {
-    return view('formateur.dashboard');
-});
+Route::get('/dashboardF', [FormateurController::class, 'emploi'] );
 Route::get('/emploiE', [EtudiantController::class, 'emploi']);
 Route::get('/passwordE', [UserController::class, 'passwordformE']);
 

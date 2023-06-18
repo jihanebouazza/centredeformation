@@ -84,4 +84,33 @@
             </table>
         </div>
     </div>
+    <script>
+        var seances = {!! json_encode($seances) !!};
+    $.each( seances, function(index, seance) {
+        var time = seance.time;
+        var classe = seance.classe;
+        var groupe = seance.groupe;
+        var formateur = seance.formateur;
+        var matiere = seance.matiere;
+
+        // Extract the relevant attributes from the models
+        var jour = time.jour.toLowerCase();
+        var heure = time.heure;
+        var formateurFullName = formateur.last_name + ' ' + formateur.first_name;
+
+        // Find the table cell with corresponding data attributes
+        var cell = $('td[data-jour="' + jour + '"][data-heure="' + heure + '"]');
+
+        // Insert the seance data into the cell
+        cell.html('<div class="text-center">' +
+                    '<p class="text-sm">' + groupe.nom + '</p>' +
+                    '<br>' +
+                    '<p class="font-bold">' + matiere.nom  + '</p>' +
+                    '<br>' +
+                    '<p class="text-sm">' + formateurFullName + '</p>' +
+                    '<br>' +
+                    '<p class="text-xs">' + classe.nom + '</p>'
+        );
+    });    
+    </script> 
 @endsection

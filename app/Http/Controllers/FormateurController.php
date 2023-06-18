@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Seance;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class FormateurController extends Controller
 {
@@ -76,6 +78,10 @@ class FormateurController extends Controller
         $formateur->update($formFields);
 
         return redirect('/formateurs')->with('success', 'Formateur mise à jour avec succès !');
+    }
+    public function emploi(){
+            $seances = Seance::where('formateur_id', auth()->user()->id )->get();
+            return view('formateur.dashboard', ['seances' => $seances ]);
     }
 
 }
