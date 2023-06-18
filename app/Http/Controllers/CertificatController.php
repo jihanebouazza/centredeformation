@@ -13,8 +13,16 @@ class CertificatController extends Controller
 
 public function generateCertificate($id)
 {
+
     $inscription = Inscription::findOrFail($id);
     $user = $inscription->etudiant;
+    $groupe = $inscription->groupe;
+    if ($inscription->etudiant_id !== auth()->user()->id) {
+        return redirect('/dashboardE')->with('error', 'Vous n\'êtes pas autorisé');
+    }
+    if ($groupe->statut !== 'finished') {
+        return redirect('/dashboardE')->with('error', 'Vous n\'êtes pas autorisé');
+    }
     $formation = $inscription->groupe->formation;
     $groupe = $inscription->groupe;
 
