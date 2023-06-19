@@ -89,6 +89,7 @@ public function edit(Seance $seance)
                 ->where('formateur_id', $formateurId)
                 ->where('classe_id', $classeId);
         })->get();    
+        
         $anotherTime = $seance->time ;
         $times[] = $anotherTime;
 

@@ -60,7 +60,7 @@
                 @endforeach
             };
             var groupesStatusData = {
-                labels: ['Finished', 'Open', 'Started', 'Full'],
+                labels: ['Fini', 'Ouvert', 'En cours', 'Complet'],
                 datasets: [{
                     data: [
                         {{ $finishedGroupesCount }},

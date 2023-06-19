@@ -117,9 +117,7 @@ class EtudiantController extends Controller
            $seances = null ;
            return view('etudiant.emploi', ['seances' => $seances ]);
            
-        }
-
-        
+        }  
     }
 
 }

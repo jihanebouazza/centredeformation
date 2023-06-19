@@ -75,8 +75,10 @@
                             </label>
                             <select name="time_id" id="time"
                                 class="block focus:ring-4 w-full px-3 py-[10px] border border-gray1 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray2 focus:border-1 focus:border-gray2 sm:text-sm">
+                                
                                 @foreach ($times as $time)
-                                <option value="{{$time->id}}" @if ($time->id == $seance->time_id) selected @endif>{{$time->jour}} {{$time->heure}}</option>
+            
+                                <option value="{{ $time->id }}" @if ( $time->id == $seance->time_id) selected @endif>{{$time->jour}} {{$time->heure}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -20,7 +20,7 @@
                         @foreach ($groupes as $groupe)
                             @if ($groupe->statut === 'open')
                                 <div class="pb-2">
-                                    <span class="font-md font-bold text-lg">{{ $groupe->nom }} :</span>
+                                    <span class="font-md font-bold text-lg">{{ $groupe->date_debut }} :</span>
                                     <span
                                         class="px-2 py-1 bg-[#FFE5CA] text-md text-[#B31312] font-bold rounded-full">{{ $groupe->capacite - $groupe->nombre_etudiant }}
                                         place restante</span>
