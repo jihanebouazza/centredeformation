@@ -216,10 +216,10 @@ Route::get('/profileE', [UserController::class, 'edit'])->middleware(['auth', 'e
 Route::put('/update_profile', [UserController::class, 'update'])->middleware(['auth', 'etudiant']);
 
 //----------------------------------------------Formateur
-Route::get('/dashboardF', [FormateurController::class, 'emploi'] );
+Route::get('/dashboardF', [FormateurController::class, 'emploi'] )->middleware(['auth', 'formateur']);
 Route::get('/emploiE', [EtudiantController::class, 'emploi'])->middleware(['auth', 'etudiant']);
 Route::get('/passwordE', [UserController::class, 'passwordformE'])->middleware(['auth', 'etudiant']);
 
-Route::put('/password', [UserController::class, 'changePassword']);
+Route::put('/password', [UserController::class, 'changePassword'])->middleware('auth');
 
 Route::get('/passwordF', [UserController::class, 'passwordformF'] )->middleware(['auth', 'formateur']);
